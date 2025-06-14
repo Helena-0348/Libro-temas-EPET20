@@ -21,4 +21,6 @@ return(
             onChange={(e)=>setEmail(e.target.value)}/>
           </div>
    </form>
+   
+   export default Email;
 );
