@@ -3,7 +3,9 @@ import React from 'react';
 const Encabezado = () => {
 
   return (
-      <h1>EPET 20</h1>
-  );
-};
+      <header>
+        <a>akjskasj</a>
+      </header>
+  )
+}
 export default Encabezado;

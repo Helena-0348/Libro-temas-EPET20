@@ -18,7 +18,10 @@ const Tabla = () => {
         
         <tbody>
           <tr>
-
+            <td><input
+                  type="text"
+                  value={fecha}
+                  onChange={(e) => setNombre(e.target.value)}/> </td>
           </tr>
         </tbody>
     </table>
