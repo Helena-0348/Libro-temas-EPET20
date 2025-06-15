@@ -1,9 +1,9 @@
 import React from 'react';
 
-const BotonDias = ({ label }) => {
+const BotonDias = ({ dia }) => {
   return (
     <button>
-      {label}
+      {dia}
     </button>
   );
 };
