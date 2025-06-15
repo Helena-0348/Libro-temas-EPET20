@@ -1,14 +1,14 @@
 import React from 'react';
-import BotonDias from './BotonDias';
+import Boton from './Boton';
 
 const Semana = () => {
   return (
     <div>
-      <BotonDias dia="L" />
-      <BotonDias dia="M" />
-      <BotonDias dia="X" />
-      <BotonDias dia="J" />
-      <BotonDias dia="V" />
+      <Boton className="botonDia" props="L" />
+      <Boton className="botonDia" props="M" />
+      <Boton className="botonDia" props="X" />
+      <Boton className="botonDia" props="J" />
+      <Boton className="botonDia" props="V" />
 
     </div>
   );

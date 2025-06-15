@@ -1,11 +1,11 @@
 import React from 'react';
 
-const BotonDias = ({ dia }) => {
+const Boton = ({ props }) => {
   return (
     <button>
-      {dia}
+      {props}
     </button>
   );
 };
 
-export default BotonDias;
+export default Boton;

@@ -1,13 +1,18 @@
 import React from 'react';
+import "../css/Encabezado.css";
 
-const Encabezado = () => {
+function Encabezado() {
 
   return (
     <div>
-      <header>
-        <a>akjskasj</a>
+      <header className='header'>
+        <a>EPET 20</a>
+        <button>
+          <img src="" alt="" />
+        </button>
       </header>
+      <a></a>
     </div>
-  )
+  );
 }
 export default Encabezado;
