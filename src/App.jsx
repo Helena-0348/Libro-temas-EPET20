@@ -1,12 +1,19 @@
 import React from 'react';
 import Encabezado from "./components/Encabezado";
+import BotonDias from './components/BotonDias';
 
-function App() {
+
+
+// Componente principal App
+// Este componente utiliza el componente Button y le pasa un texto como prop.
+const App = () => {
   return (
-    <div >
-      <Encabezado />
+    <div>
+      <BotonDias label="L" />
     </div>
   );
-}
+};
 
 export default App;
+
+

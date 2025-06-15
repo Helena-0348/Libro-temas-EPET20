@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 
 const Fila = () => {
     const [fecha, setFecha] = useState('');
@@ -6,7 +6,9 @@ const Fila = () => {
     const [unidad, setUnidad] = useState('');
     const [tema, setTema] = useState('');
     const [actividad, setActividad] = useState('');
-
+    const [si, setSI] = useState(false);
+    const [no, setNo] = useState(false);
+    const [Confirma, setConfirma] = useState(false);
 
     const handleSubmit = (e) => {
     e.preventDefault(); };
@@ -36,7 +38,10 @@ const Fila = () => {
         onChange={(e) => setActividad(e.target.value)}/>
 
     <input
-          type="checkbox"/>
+          type="checkbox"
+            checked={check1}
+            onChange={(e) => setCheck1(e.target.checked)}
+          />
     <input
           type="checkbox"/>
     <input
