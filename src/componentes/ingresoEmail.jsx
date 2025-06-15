@@ -3,13 +3,13 @@ import React, {useState} from "react";
 const Formulario = () =>{
     //el primer no existe, esta en blanco
     const[email, setEmail] = useState('');
-}
+
 
 const handleSubmit = (e) =>{
     //revisa que no se cargue de vuelta
     e.preventDefault();
     alert(`${email} inexistente`);
-}
+};
 
 return(
     //creando formulario
@@ -22,5 +22,7 @@ return(
           </div>
    </form>
    
-   export default Formulario;
 );
+};
+
+   export default Formulario;
