@@ -6,4 +6,11 @@
 
 .cajaMaterias{
     background-color: brown;
+    display:grid;
 }
+
+.cajaElementos {
+display: flex; 
+}
+
+

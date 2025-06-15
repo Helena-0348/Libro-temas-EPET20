@@ -1,12 +1,12 @@
 import React from 'react';
 import "../css/Boton.css";
 
-const Boton = ({ props }) => {
+const BotonDia = ({ props }) => {
   return (
-    <button className='boton'>
+    <button className='botonDia'>
       {props}
     </button>
   );
 };
 
-export default Boton;
+export default BotonDia;

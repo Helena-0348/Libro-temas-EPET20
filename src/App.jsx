@@ -6,11 +6,11 @@ import Tabla from './components/Tabla';
 import Boton from './components/Boton';
 import './css/App.css'
 
-
 const App = () => {
   return (
     <div>
       <Encabezado />
+      <div className='cajaElementos' >
       <div className='cajaOpcion'>
         
         <Semana />
@@ -25,12 +25,13 @@ const App = () => {
           <Materias curso="3ro 2da" materia="Geografia" />
         </div>
 
-      <Boton props="Poec" />
+      <Boton props="Poec"  />
       <Boton props="Editar" />
       </div>
 
-      <Tabla />
+      <Tabla className='Tabla'/>
 
+    </div>
     </div>
   );
 };
