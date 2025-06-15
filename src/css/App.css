@@ -1,5 +1,5 @@
 .cajaOpcion{
-    background-color: blue;
+    background-color: #b5c3f6;
     height: 850px;
     width: 400px;
     padding: 20px;
@@ -10,6 +10,7 @@
 }
 
 .cajaElementos {
+    background-color: #edf0fe;
 display: flex; 
 }
 

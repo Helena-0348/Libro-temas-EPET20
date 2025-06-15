@@ -1,3 +1,4 @@
+//componente de prueba para la pagina del formulario
 import Encabezado from "./components/Encabezado";
 import Materias from './components/Materias';
 import Semana from './components/Semana';
