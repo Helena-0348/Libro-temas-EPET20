@@ -9,7 +9,7 @@ function Encabezado() {
     <div>
       <header className='header'>
         <a>EPET 20</a>
-        <a className='cuenta'>cuenta</a>
+        <p className='cuenta'>cuenta</p>
       </header>
 
     </div>

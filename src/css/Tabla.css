@@ -2,22 +2,22 @@
     display: grid;
     height: 220px;
     width: 800px;
-    grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto;
     margin: 20px;
 }
 
 .fila{
     background-color: rgb(194, 194, 194);
     display: grid;
-    height: 20px;
+    height: 22px;
     width: 800px;
-    grid-template-columns: auto auto auto auto auto auto auto auto;
+    grid-template-columns: 100px 100px 100px 100px 125px 50px 50px 175px;
 
 }
+
 .celda{
     height: auto;
     width: auto;
     border: 1px solid aqua;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 2px;
 }

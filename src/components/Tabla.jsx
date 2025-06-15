@@ -24,6 +24,21 @@ const Tabla = () => {
             <Fila></Fila>
             <Fila></Fila>
             <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
+            <Fila></Fila>
 </div>
   );
 };

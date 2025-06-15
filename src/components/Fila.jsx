@@ -5,15 +5,14 @@ const Fila = () => {
 
   return (
     <div className='fila'>
-      <a className='celda'>j</a>
-      <a className='celda'>-</a>
-      <a className='celda'>-</a>
-      <a className='celda'>-</a>
-      <a className='celda'>-</a>
-      <a className='celda'>a</a>
-      <a className='celda'>-</a>
-      <a className='celda'>-</a>
-      <a className='celda'>-</a>
+      <a className='celda'> </a>
+      <a className='celda'> </a>
+      <a className='celda'> </a>
+      <a className='celda'> </a>
+      <a className='celda'> </a>
+      <a className='celda'> </a>
+      <a className='celda'> </a>
+      <a className='celda'> </a>
     </div>
   );
 }

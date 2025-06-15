@@ -1,15 +1,16 @@
 import React from 'react';
 import BotonDia from './BotonDia';
 import "../css/Boton.css";
+import "../css/Semana.css";
 
 const Semana = () => {
   return (
-    <div>
-      <BotonDia className="botonDia" props="L" />
-      <BotonDia className="botonDia" props="M" />
-      <BotonDia className="botonDia" props="X" />
-      <BotonDia className="botonDia" props="J" />
-      <BotonDia className="botonDia" props="V" />
+    <div className='cajaDias'>
+      <BotonDia props="L" />
+      <BotonDia props="M" />
+      <BotonDia props="X" />
+      <BotonDia props="J" />
+      <BotonDia props="V" />
 
     </div>
   );

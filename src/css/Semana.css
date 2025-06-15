@@ -1,4 +1,4 @@
-.botonDia{
-    font-size: 15px;
-    color: rgb(28, 184, 54);
+.cajaDias{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
 }

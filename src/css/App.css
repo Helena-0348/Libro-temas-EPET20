@@ -1,11 +1,11 @@
 .cajaOpcion{
     background-color: blue;
-    height: 800px;
+    height: 850px;
     width: 400px;
+    padding: 20px;
 }
 
 .cajaMaterias{
-    background-color: brown;
     display:grid;
 }
 
