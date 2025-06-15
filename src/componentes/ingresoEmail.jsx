@@ -22,5 +22,5 @@ return(
           </div>
    </form>
    
-   export default Email;
+   export default Formulario;
 );

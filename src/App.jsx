@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from "react";
+import Formulario from "./componentes/ingresoEmail";
 
 function App() {
     return ( <
@@ -16,8 +16,7 @@ function App() {
         target = "_blank"
         rel = "noopener noreferrer" >
         Learn React <
-        /a> < /
-        header > <
+        /a> </header> <
         /div>
     );
 }
