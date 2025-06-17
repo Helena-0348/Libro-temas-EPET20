@@ -1,9 +1,12 @@
-import React from 'react'
-
-
 import React from "react";
 import Formulario from "./componentes/ingresoEmail";
 import logo_epet20 from "./recursos/img/logo_epet20.jpg";
+import Encabezado from "./components/Encabezado";
+import Materias from './components/Materias';
+import Semana from './components/Semana';
+import Tabla from './components/Tabla';
+import Boton from './components/Boton';
+
 /*import { BrowserRouter as Router } from 'react-router-dom';*/
 
 function App() {
@@ -25,54 +28,6 @@ function App() {
 
 
     );
-}
-
-export default App;
-import React from 'react'
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
-
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
 }
 
 export default App;
