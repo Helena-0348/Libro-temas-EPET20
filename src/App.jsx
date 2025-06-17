@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import Formulario from "./componentes/ingresoEmail";
 import logo_epet20 from "./recursos/img/logo_epet20.jpg";
@@ -24,7 +23,6 @@ function App() {
 }
 
 export default App;
-=======
 import React from 'react'
 
 function App() {
@@ -49,4 +47,3 @@ function App() {
 }
 
 export default App;
->>>>>>> a4c7e22a90f3556c4215ba63a922c8aecff8e2fe
