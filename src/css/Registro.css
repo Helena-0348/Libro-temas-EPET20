@@ -1,0 +1,53 @@
+.registro-container {
+  background-color: #e0f7fa;
+  padding: 10px;
+  border-radius: 10px;
+  width: 400px , 200px;
+  margin: 100px;
+  text-align: center;
+}
+
+.registro-title {
+  background-color: #00bcd4;
+  color: white;
+  padding: 20px;
+  border-radius: 2px;
+  font-size: 22px;
+}
+
+.registro-form {
+  margin-top: 20px;
+}
+
+.registro-input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #b0bec5;
+  border-radius: 5px;
+  width: 80%;
+}
+
+.registro-button {
+  background-color: #00bcd4;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+  text-decoration: none;
+  
+}
+
+.registro-button:hover {
+  background-color: #008ba3;
+}
+
+.registro-logo {
+  margin-top: 20px;
+}
+
+.registro-logo img {
+  width: 100px;
+}
