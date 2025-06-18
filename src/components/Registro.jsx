@@ -18,7 +18,7 @@ const Registro = () => {
       <div className="registro-logo">
         <img src="/a.png" alt="E.P.E.T. N° 20 NEUQUÉN" />
       </div>
-      <Link to="/otra-pagina"  className="registro-link">Ir a otra página</Link>
+      <input  type='submit' to="/otra-pagina"  className="registro-link">Ir a otra página</input>
     </div>
 
   );
