@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import "..css/formulario";
 
 const Formulario = () =>{
     //el primer no existe, esta en blanco
