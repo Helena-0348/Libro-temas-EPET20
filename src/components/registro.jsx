@@ -4,9 +4,11 @@ import '../css/Registro.css';
 
 const Registro = () => {
   return (
+
     <div className="registro-container">
       <h1 className="registro-title">Registro</h1>
       <div className="registro-form">
+        
         <input type="text" placeholder="Gmail" className="registro-input" />
         <input type="text" placeholder="Curso" className="registro-input" />
         <input type="text" placeholder="División" className="registro-input" />
@@ -18,6 +20,7 @@ const Registro = () => {
       </div>
       <Link to="/otra-pagina" className="registro-link">Ir a otra página</Link>
     </div>
+
   );
 };
 
