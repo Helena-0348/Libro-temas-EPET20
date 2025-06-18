@@ -18,7 +18,7 @@ function App() {
         <div>
             <img src={logo_epet20} alt="logo epet20"/>
             <h1>Iniciar sesión</h1>
-            <Formulario></Formulario>
+            <Formulario />
         </div>
 
 
