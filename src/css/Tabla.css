@@ -1,0 +1,32 @@
+.tabla {
+    display: grid;
+    height: 220px;
+    width: 810px;
+    margin: 20px;
+}
+
+.fila {
+    background-color: rgba(194, 194, 194, 0);
+    display: grid;
+    height: auto;
+    width: 810px;
+    grid-template-columns: 100px 100px 100px 100px 130px 50px 50px 180px;
+}
+
+.celda {
+    height: 20px;
+    width: auto;
+    border: 1px solid #456ea7;
+    margin: 0px;
+    padding: 1px;
+}
+
+.celdaP {
+    background-color: #6a92c8;
+    color: rgb(226, 233, 240);
+    width: auto;
+    border: 1px solid #456ea7;
+    margin: 0px;
+    padding: 3px;
+    height: 30px;
+}
