@@ -4,7 +4,7 @@ import '../css/Registro.css';
 
 const Registro = () => {
   return (
-
+// Me faltaria un handle submit en donde verifique los campos si estan completos   
     <div className="registro-container">
       <h1 className="registro-title">Registro</h1>
       <div className="registro-form">
@@ -13,10 +13,10 @@ const Registro = () => {
         <input type="text" placeholder="Curso" className="registro-input" />
         <input type="text" placeholder="División" className="registro-input" />
         <input type="text" placeholder="Código de Clase" className="registro-input" />
-        <button  className="registro-button"><link to="/otra-pagina"  className="registro-link" />Iniciar sesión</button>
+        <button  className="registro-button"><link to="/otra-pagina"  className="registro-link" /> Iniciar sesión</button>
       </div>
       <div className="registro-logo">
-        <img src="/logo_epet20.jpg" alt="E.P.E.T. N° 20 NEUQUÉN" />
+        <img src="/logo_epet20.jpg" alt=" E.P.E.T. N° 20 NEUQUÉN " />
       </div>
       <link  type='submit' to="/otra-pagina"  className="registro-link"Ir a otra página />
     </div>

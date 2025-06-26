@@ -1,9 +1,9 @@
 .registro-container {
   background-color: #e0f7fa;
-  padding: 10px;
+  padding: 10px;/*Controla el espacio interno entre el contenido de un elemento (como texto o imágenes) y el borde del elemento.*/
   border-radius: 10px;
   width: 400px , 200px;
-  margin: 100px;
+  margin: 100px;/* Controla el espacio externo entre un elemento y otros elementos que lo rodean.*/
   text-align: center;
 } 
 
@@ -33,7 +33,7 @@
   color: white;
   padding: 10px;
   border: none;
-  border-radius: 10px;
+  border-radius: 100px;
   cursor: pointer;
   margin-top: 15px;
   text-decoration: none;
