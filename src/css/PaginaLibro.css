@@ -1,0 +1,17 @@
+.cajaOpcion{
+    background-color: #b5c3f6;
+    height: 850px;
+    width: 400px;
+    padding: 20px;
+}
+
+.cajaMaterias{
+    display:grid;
+}
+
+.cajaElementos {
+    background-color: #edf0fe;
+display: flex; 
+}
+
+

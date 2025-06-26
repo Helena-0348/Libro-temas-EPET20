@@ -1,9 +1,10 @@
-//componente de prueba para la pagina del formulario
+//componente para la pagina del formulario
 import Encabezado from "./components/Encabezado";
 import Materias from './components/Materias';
 import Semana from './components/Semana';
 import Tabla from './components/Tabla';
 import Boton from './components/Boton';
+import '../css/PaginaLibro.css';
 import Inicio from './components/Inicio';
 
 const PaginaLibro = () => {
