@@ -16,7 +16,6 @@ const Registro = () => {
         
         <button  className="registro-button"><link to="/otra-pagina"  className="registro-link" /> Iniciar sesión</button>
 
-        <button  className="registro-button"><link to="/otra-pagina"  className="registro-link" />Iniciar sesión</button>
       </div>
       <div className="registro-logo">
         <img src="/logo_epet20.jpg" alt=" E.P.E.T. N° 20 NEUQUÉN " />
