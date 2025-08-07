@@ -15,7 +15,7 @@ const handleSubmit = (e) =>{
 return(
     //creando formulario
    <form onSubmit={handleSubmit}>
-          <div>
+          <div className="caja">
             <label>Correo electrónico</label>
             <input type="text"
             value={email}
