@@ -5,7 +5,7 @@ import Semana from '../components/Semana.jsx';
 import Tabla from '../components/Tabla.jsx';
 import Boton from '../components/Boton.jsx';
 import '../css/PaginaLibro.css';
-import Inicio from './components/Inicio';
+import Inicio from '../components/Inicio.jsx';
 
 const PaginaLibro = () => {
   return (
