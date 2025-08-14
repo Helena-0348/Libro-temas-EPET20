@@ -14,7 +14,7 @@ import { Routes, Route } from 'react-router-dom'; //PREGUNTAR EN CLASE
 
 
 //import FormularioNombreApellido from "./components/formularioNombreApellido";
-import PantallaDestino from "./components/PantallaDestino";
+//import PantallaDestino from "./components/PantallaDestino";
 
 import PaginaInicio from "./components/PaginaInicio";
 
@@ -26,17 +26,12 @@ function App() {
 
                 <Route path="/libro" element={<PaginaLibro />} />
 
-                <Route path="/paginainicio" element={<PaginaInicio />} />
+                <Route path="/inicio" element={<PaginaInicio />} />
+
+                <Route path="/registro" element={<Registro />} />
             </Routes>
         </Router>
-        <div>
-                <Registro />
-                <img src="/logo_epet20" alt="logo epet20" />
-                <h1>Iniciar sesión</h1>
-            </div></>
-       
-
-
+</>
 
     );
 }

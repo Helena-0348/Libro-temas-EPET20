@@ -17,6 +17,13 @@ const handleSubmit = (e) =>{
 return(
     //creando formulario
    <form onSubmit={handleSubmit}>
+
+            <div>
+
+                <img src="/logo_epet20" alt="logo epet20" />
+                <h1>Iniciar sesión</h1>
+            </div>
+
           <div className="caja">
             <label>Correo electrónico</label>
             <input type="text"
