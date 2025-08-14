@@ -9,29 +9,31 @@ import Registro from ".//components/Registro";
 
 
 import { BrowserRouter as Router } from 'react-router-dom'; // REACT ROUTER
-import FormularioNombreApellido from "./components/formularioNombreApellido";
+
+import { Routes, Route } from 'react-router-dom'; //PREGUNTAR EN CLASE
+
+
+//import FormularioNombreApellido from "./components/formularioNombreApellido";
 import PantallaDestino from "./components/PantallaDestino";
 
 import PaginaInicio from "./components/PaginaInicio";
 
 function App() {
     return ( 
-        <Router>
-           <Routes>
-                 <Route path="/" element={<Formulario titulo="Formulario Email" />} />
+        <><Router>
+            <Routes>
+                <Route path="/" element={<Formulario titulo="Formulario Email" />} />
 
-                 <Route path="/libro" element={<PaginaLibro />} />
+                <Route path="/libro" element={<PaginaLibro />} />
 
-                 <Route path="/paginainicio" element={<PaginaInicio/>} />
-           </Routes>
+                <Route path="/paginainicio" element={<PaginaInicio />} />
+            </Routes>
         </Router>
-
-         
         <div>
-            <Registro/>
-            <img src="/logo_epet20" alt="logo epet20"/>
-            <h1>Iniciar sesión</h1>
-        </div>
+                <Registro />
+                <img src="/logo_epet20" alt="logo epet20" />
+                <h1>Iniciar sesión</h1>
+            </div></>
        
 
 
