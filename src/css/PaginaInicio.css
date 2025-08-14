@@ -1,7 +1,21 @@
 form {
-    background-color: aquamarine;
+    background-color: #00bcd4;
 }
 
 .cajaCorreo {
-    background-color: blueviolet;
+    background-color: #e0f7fa;
+}
+
+h1 {
+    color: white;
+}
+
+.formulario {
+    background-color: #e0f7fa;
+    padding: 10px;
+    /*Controla el espacio interno entre el contenido de un elemento (como texto o imágenes) y el borde del elemento.*/
+    border-radius: 10px;
+    width: 400px, 200px;
+    margin: 100px;
+    text-align: center;
 }

@@ -15,9 +15,9 @@ const handleSubmit = (e) =>{
 
 return(
     //creando formulario
-   <form onSubmit={handleSubmit}>
+   <form onSubmit={handleSubmit} className="formulario">
 
-            <div>
+            <div className="cajaInicio">
 
                 <img src="/logo_epet20" alt="logo epet20" />
                 <h1>Iniciar sesión</h1>
