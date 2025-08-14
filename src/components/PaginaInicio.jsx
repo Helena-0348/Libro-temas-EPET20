@@ -1,9 +1,8 @@
 import React, {useState} from "react";
+import "../css/PaginaInicio.css";
 
 
-
-
-const Formulario = () =>{
+const PaginaInicio = () =>{
     //el primer no existe, esta en blanco
     const[email, setEmail] = useState('');
 
@@ -24,7 +23,7 @@ return(
                 <h1>Iniciar sesión</h1>
             </div>
 
-          <div className="caja">
+          <div className="cajaCorreo">
             <label>Correo electrónico</label>
             <input type="text"
             value={email}
@@ -35,4 +34,4 @@ return(
 );
 };
 
-   export default Formulario;
+   export default PaginaInicio;

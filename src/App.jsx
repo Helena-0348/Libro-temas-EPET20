@@ -2,11 +2,10 @@ import React from "react";
 
 import Formulario from "./components/Formulario.jsx";
 // import Formulario from './css/Formulario';
-
 import logo_epet20 from "./css/logo_epet20.jpg";
 import PaginaLibro from "./components/PaginaLibro";
 import Registro from ".//components/Registro";
-
+import PaginaInicio from "./components/PaginaInicio";
 
 import { BrowserRouter as Router } from 'react-router-dom'; // REACT ROUTER
 
@@ -16,7 +15,7 @@ import { Routes, Route } from 'react-router-dom'; //PREGUNTAR EN CLASE
 //import FormularioNombreApellido from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
 
-import PaginaInicio from "./components/PaginaInicio";
+
 
 function App() {
     return ( 
