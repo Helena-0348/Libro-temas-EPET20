@@ -16,16 +16,17 @@ import PaginaInicio from "./components/PaginaInicio";
 
 function App() {
     return ( 
-        /*
         <Router>
            <Routes>
                  <Route path="/" element={<Formulario titulo="Formulario Email" />} />
 
-                 pagina a añadir para futura navegacion
                  <Route path="/libro" element={<PaginaLibro />} />
+
+                 <Route path="/paginainicio" element={<PaginaInicio/>} />
            </Routes>
         </Router>
-        */
+
+         
         <div>
             <Registro/>
             <img src="/logo_epet20" alt="logo epet20"/>
