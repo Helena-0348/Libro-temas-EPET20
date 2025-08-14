@@ -6,7 +6,13 @@ import Formulario from "./components/Formulario.jsx";
 import logo_epet20 from "./css/logo_epet20.jpg";
 import PaginaLibro from "./components/PaginaLibro";
 import Registro from ".//components/Registro";
-/*import { BrowserRouter as Router } from 'react-router-dom';*/
+
+
+import { BrowserRouter as Router } from 'react-router-dom'; // REACT ROUTER
+import FormularioNombreApellido from "./components/formularioNombreApellido";
+import PantallaDestino from "./components/PantallaDestino";
+
+import PaginaInicio from "./components/PaginaInicio";
 
 function App() {
     return ( 

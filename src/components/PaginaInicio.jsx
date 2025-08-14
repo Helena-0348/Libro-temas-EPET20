@@ -1,6 +1,10 @@
 import React, {useState} from "react";
 
 
+navigate("/resultado", {
+state: { nombre, apellido }
+});
+
 const Formulario = () =>{
     //el primer no existe, esta en blanco
     const[email, setEmail] = useState('');
