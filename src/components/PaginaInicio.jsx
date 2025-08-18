@@ -15,21 +15,35 @@ const handleSubmit = (e) =>{
 
 return(
     //creando formulario
-   <form onSubmit={handleSubmit} className="formulario">
+   
 
-            <div className="cajaInicio">
+               <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6 col-lg-4">
+          <div className="card shadow p-4">
+            <div className="text-center mb-3"></div>
 
-                <img src="/logo_epet20" alt="logo epet20" />
-                <h1>Iniciar sesión</h1>
+                <img src="/logo_epet20" alt="logo epet20" className="img-fluid mb-3"/>
+                <h1 className="h4 text-primary">Iniciar sesión</h1>
             </div>
 
-          <div className="cajaCorreo">
-            <label>Correo electrónico</label>
-            <input type="text"
+<form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Correo electrónico</label>
+            <input    type="email"
+                  className="form-control"
+                  value={email}
             value={email}
             onChange={(e)=>setEmail(e.target.value)}/>
           </div>
+          <button type="submit" className="btn btn-primary w-100">
+                Ingresar
+              </button>
    </form>
+   </div>
+        </div>
+      </div>
+
    
 );
 };
