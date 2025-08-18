@@ -16,11 +16,10 @@ const handleSubmit = (e) =>{
 return(
     //creando formulario
    
-
-               <div className="container mt-5">
+               <div className="container mt-5"> 
       <div className="row justify-content-center">
-        <div className="col-md-6 col-lg-4">
-          <div className="card shadow p-4">
+        <div className="col-md-7 col-lg-5">
+          <div className="card shadow p-4 rounded-4">
             <div className="text-center mb-3"></div>
 
                 <img src="/logo_epet20" alt="logo epet20" className="img-fluid mb-3"/>
