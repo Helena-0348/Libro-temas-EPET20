@@ -2,7 +2,7 @@ import React from "react";
 
 import Formulario from "./components/Formulario.jsx";
 // import Formulario from './css/Formulario';
-import logo_epet20 from "./css/logo_epet20.jpg";
+//import logo_epet20 from "./public/logo_epet20.jpg";
 import PaginaLibro from "./components/PaginaLibro";
 import Registro from ".//components/Registro";
 import PaginaInicio from "./components/PaginaInicio";
