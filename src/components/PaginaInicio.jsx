@@ -24,7 +24,7 @@ return(
 
                 <img src="/logo_epet20" alt="logo epet20" className="img-fluid mb-3"/>
                 <h1 className="h4 text-primary">Iniciar sesión</h1>
-            </div>
+            
 
 <form onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -39,6 +39,7 @@ return(
                 Ingresar
               </button>
    </form>
+   </div>
    </div>
         </div>
       </div>

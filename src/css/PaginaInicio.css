@@ -10,17 +10,22 @@ h1 {
     color: white;
 }
 
-.formulario {
-    background-color: #e0f7fa;
-    padding: 10px;
-    /*Controla el espacio interno entre el contenido de un elemento (como texto o imágenes) y el borde del elemento.*/
-    border-radius: 10px;
-    width: 400px, 200px;
-    margin: 100px;
-    text-align: center;
+form {
+    background-color: blue;
+}
+
+.container {
+    background-color: #00bcd4;
 }
 
 .card {
     min-height: 300px;
+    background-color: #00bcd4;
     /* sirve para hacer mas largo el formulario */
+}
+
+.btn-primary {
+    background-color: #ff6f61 !important;
+    /* Color del boton ingresar*/
+    border-color: #ff6f61 !important;
 }
