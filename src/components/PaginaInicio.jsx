@@ -22,7 +22,7 @@ return(
           <div className="card shadow p-4 rounded-4">
             <div className="text-center mb-3"></div>
 
-                <img src="/logo_epet20" alt="logo epet20" className="img-fluid mb-3"/>
+                <img src="/logo_epet20.jpg" alt="logo epet20" className="img-fluid mb-3"/>
                 <h1 className="h4 text-primary">Iniciar sesión</h1>
             
 
