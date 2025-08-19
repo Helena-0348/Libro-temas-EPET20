@@ -1,13 +1,15 @@
 import React from "react";
 
-import Formulario from "./components/Formulario.jsx";
-import logo_epet20 from "./css/logo_epet20.jpg";
+//import Formulario from "./components/Formulario.jsx";
+//import logo_epet20 from "./img/logo_epet20.jpg";
 // import Formulario from './css/Formulario';
-
-import logo_epet20 from "./recursos/img/logo_epet20.jpg";
-import PaginaLibro from "./components/PaginaLibro";
-import Registro from ".//components/Registro";
+//import logo_epet20 from "./css/logo_epet20.jpg";
+//import PaginaLibro from "./components/PaginaLibro";
+//import Registro from ".//components/Registro";
 /*import { BrowserRouter as Router } from 'react-router-dom';*/
+import Registromo from "./components/registromodificacion.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Inicio from "./components/Inicio.jsx";
 
 function App() {
     return ( 
@@ -22,9 +24,15 @@ function App() {
         </Router>
         */
         <div>
-            <Registro/>
-            <img src="/logo_epet20" alt="logo epet20"/>
-            <h1>Iniciar sesión</h1>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Inicio/>} />
+                    <Route path="/registro" element={<Registromo/>} />
+
+                    </Routes>
+    
+                
+                    </BrowserRouter>
         </div>
        
 

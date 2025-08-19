@@ -46,6 +46,12 @@
 
 .registro-logo {
   margin-top: 20px;
+   width: 150px;      /* Cambiá según necesites */
+    height: auto;
+    border: 2px solid #333;
+    border-radius: 8px; /* Esquinas redondeadas */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
 }
 
 .registro-logo img {
