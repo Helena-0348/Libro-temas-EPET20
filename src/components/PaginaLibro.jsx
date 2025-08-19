@@ -1,11 +1,11 @@
 //componente para la pagina del formulario
-import Encabezado from "./components/Encabezado";
-import Materias from './components/Materias';
-import Semana from './components/Semana';
-import Tabla from './components/Tabla';
-import Boton from './components/Boton';
+import Encabezado from "../components/Encabezado.jsx";
+import Materias from '../components/Materias.jsx';
+import Semana from '../components/Semana.jsx';
+import Tabla from '../components/Tabla.jsx';
+import Boton from '../components/Boton.jsx';
 import '../css/PaginaLibro.css';
-import Inicio from './components/Inicio';
+import Inicio from '../components/Inicio.jsx';
 
 const PaginaLibro = () => {
   return (

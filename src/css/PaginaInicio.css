@@ -1,0 +1,31 @@
+form {
+    background-color: #00bcd4;
+}
+
+.cajaCorreo {
+    background-color: #e0f7fa;
+}
+
+h1 {
+    color: white;
+}
+
+form {
+    background-color: blue;
+}
+
+.container {
+    background-color: #00bcd4;
+}
+
+.card {
+    min-height: 300px;
+    background-color: #00bcd4;
+    /* sirve para hacer mas largo el formulario */
+}
+
+.btn-primary {
+    background-color: #ff6f61 !important;
+    /* Color del boton ingresar*/
+    border-color: #ff6f61 !important;
+}

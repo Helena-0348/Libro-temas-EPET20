@@ -1,7 +1,7 @@
 import React from 'react';
 import "../css/Encabezado.css";
-import "../../public/cuenta.png"
-import "../../public/opciones.png"
+/*import ".././public/cuenta.png"
+import "../../public/opciones.png" */
 
 function Encabezado() {
 
