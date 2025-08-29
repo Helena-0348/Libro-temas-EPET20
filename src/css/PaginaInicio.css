@@ -11,11 +11,11 @@ h1 {
 }
 
 form {
-    background-color: blue;
+    background-color: #e0f7fa;
 }
 
 .container {
-    background-color: #00bcd4;
+    background-color: #e0f7fa;
 }
 
 .card {
@@ -25,7 +25,7 @@ form {
 }
 
 .btn-primary {
-    background-color: #ff6f61 !important;
+    background-color: #00bcd4 !important;
     /* Color del boton ingresar*/
     border-color: #ff6f61 !important;
 }
