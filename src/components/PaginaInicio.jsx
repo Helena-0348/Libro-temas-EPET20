@@ -36,11 +36,24 @@ return(
             <input    type="email"
                   className="form-control"
                   value={email}
-            onChange={(e)=>setEmail(e.target.value)}/>
+            onChange={(e)=>setEmail(e.target.value)} 
+            placeholder="ejemplo@gmail.com"/>
           </div>
           <button type="submit" className="btn btn-primary w-100">
                 Ingresar
               </button>
+              
+              <div className="mt-3 text-center">
+              <button className="btn btn-outline-danger w-100">
+                <img
+                  src="https://developers.google.com/identity/images/g-logo.png"
+                  alt="Google"
+                  width="20"
+                  className="me-2"
+                />
+                Sign in with Google
+              </button>
+            </div>
    </form>
    </div>
    </div>
