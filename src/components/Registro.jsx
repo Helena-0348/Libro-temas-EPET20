@@ -4,6 +4,8 @@ import logo_epet20 from "../img/logo_epet20.jpg";
 
 
 const Registro = () => {
+
+
   return (
    
     <div className="registro-container">

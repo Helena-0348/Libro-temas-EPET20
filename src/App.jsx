@@ -9,7 +9,7 @@ import PaginaInicio from "./components/PaginaInicio";
 
 import { BrowserRouter as Router } from 'react-router-dom'; // REACT ROUTER
 
-import { Routes, Route } from 'react-router-dom'; //PREGUNTAR EN CLASE
+import { Routes, Route } from 'react-router-dom'; 
 
 
 //import FormularioNombreApellido from "./components/formularioNombreApellido";
