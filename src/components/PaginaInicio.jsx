@@ -30,14 +30,14 @@ return(
                 <h1 className="h4 text-primary">Iniciar sesión</h1>
             
 
-<form onSubmit={handleSubmit}>
+<form onSubmit={handleSubmit} className="inicio-form">
           <div className="mb-3">
             <label className="form-label">Correo electrónico</label>
             <input    type="email"
                   className="form-control"
                   value={email}
             onChange={(e)=>setEmail(e.target.value)} 
-            placeholder="ejemplo@gmail.com"/>
+            placeholder="correo@gmail.com"/>
           </div>
           <button type="submit" className="btn btn-primary w-100">
                 Ingresar
