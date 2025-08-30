@@ -10,6 +10,7 @@ import PaginaInicio from "./components/PaginaInicio";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; // REACT ROUTER
 
 
+
 //import FormularioNombreApellido from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
 

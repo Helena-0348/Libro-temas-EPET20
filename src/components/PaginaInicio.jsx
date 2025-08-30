@@ -19,8 +19,8 @@ const handleSubmit = (e) =>{
 
 return(
     //creando formulario
-   
-               <div className="container mt-5"> 
+<div className="div-padre">
+               <div className="container mt-5" className="caja-form" > 
       <div className="row justify-content-center">
         <div className="col-md-7 col-lg-5">
           <div className="card shadow p-4 rounded-4">
@@ -30,14 +30,14 @@ return(
                 <h1 className="h4 text-primary">Iniciar sesión</h1>
             
 
-<form onSubmit={handleSubmit}>
+<form onSubmit={handleSubmit} className="inicio-form">
           <div className="mb-3">
             <label className="form-label">Correo electrónico</label>
             <input    type="email"
                   className="form-control"
                   value={email}
             onChange={(e)=>setEmail(e.target.value)} 
-            placeholder="ejemplo@gmail.com"/>
+            placeholder="correo@gmail.com"/>
           </div>
           <button type="submit" className="btn btn-primary w-100">
                 Ingresar
@@ -59,6 +59,7 @@ return(
    </div>
         </div>
       </div> 
+</div>
 );
 };
    export default PaginaInicio;
