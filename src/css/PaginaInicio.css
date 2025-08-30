@@ -1,5 +1,6 @@
-form {
-    background-color: #00bcd4;
+.div-padre {
+    height: 100%;
+    background: linear-gradient(to bottom, #00bcd4, #2b76a5);
 }
 
 .cajaCorreo {
@@ -11,7 +12,8 @@ h1 {
 }
 
 .inicio-form {
-    background-color: #e0f7fa;
+    /*dentro esta correo*/
+    background-color: #ffffff;
 }
 
 .container {
@@ -20,12 +22,12 @@ h1 {
 
 .card {
     min-height: 300px;
-    background-color: #00bcd4;
+    background-color: #ffffff;
     /* sirve para hacer mas largo el formulario */
 }
 
 .btn-primary {
     background-color: #00bcd4 !important;
     /* Color del boton ingresar*/
-    border-color: #ff6f61 !important;
+    border-color: #16bfe0 !important;
 }
