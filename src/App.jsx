@@ -7,9 +7,7 @@ import PaginaLibro from "./components/PaginaLibro";
 import Registro from ".//components/Registro";
 import PaginaInicio from "./components/PaginaInicio";
 
-import { BrowserRouter as Router } from 'react-router-dom'; // REACT ROUTER
-
-import { Routes, Route } from 'react-router-dom'; //PREGUNTAR EN CLASE
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; // REACT ROUTER
 
 
 //import FormularioNombreApellido from "./components/formularioNombreApellido";
@@ -23,7 +21,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Formulario titulo="Formulario Email" />} />
 
-                <Route path="/libro" element={<PaginaLibro />} />
+                <Route path="/libro/*" element={<PaginaLibro />} />
 
                 <Route path="/inicio" element={<PaginaInicio />} />
 
@@ -36,6 +34,10 @@ function App() {
 }
 
 export default App;
+
+
+
+
 // import React from 'react'
 
 // function App() {
