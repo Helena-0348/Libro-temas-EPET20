@@ -1,4 +1,4 @@
-import Header from './components/Header';
+import Header from '../components/Header.jsx';
 import Info from './components/Info';
 import ContactoInfo from './components/ContactoInfo';
 import "../css/Home.css";
