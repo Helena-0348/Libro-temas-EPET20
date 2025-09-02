@@ -1,5 +1,6 @@
 import React from "react";
 
+import Home from "./components/Home";
 import Formulario from "./components/Formulario.jsx";
 // import Formulario from './css/Formulario';
 //import logo_epet20 from "./public/logo_epet20.jpg";
@@ -20,7 +21,7 @@ function App() {
     return ( 
         <><Router>
             <Routes>
-                <Route path="/" element={<Formulario titulo="Formulario Email" />} />
+                <Route path="/" element={<Home titulo="Formulario Email" />} />
 
                 <Route path="/libro/*" element={<PaginaLibro />} />
 
