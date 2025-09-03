@@ -1,6 +1,6 @@
-import Header from '../components/Header.jsx';
-import Info from './components/Info';
-import ContactoInfo from './components/ContactoInfo';
+//import Header from '../components/Encabezado';
+import Info from '../components/Info';
+import ContactoInfo from './ContactoInfo';
 import "../css/Home.css";
 
 const Home = () => {
