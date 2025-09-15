@@ -3,9 +3,9 @@ import '../css/Titulo.css';
 const Titulo = () => {
   return (
     <div className="Titulo">
-      <header>
+      <h1>
         Libro de Temas - EPET N°20
-      </header>
+      </h1>
     </div>
   );
 };

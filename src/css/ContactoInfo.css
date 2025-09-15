@@ -1,7 +1,13 @@
-.cover-page {
+.contacto {
   font-family: 'Segoe UI', sans-serif;
-  border: 1px solid #ccc;
-  max-width: 600px;
+  font-size: 0.9rem;
+  border: px0 solid #ccc;
   margin: auto;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background-color: #003366;
+  color: white;
+  padding: 0px;
+  bottom: 0cm;
+  position: fixed;
+  width:100%;
 }
