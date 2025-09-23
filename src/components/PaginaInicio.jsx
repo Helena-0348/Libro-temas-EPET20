@@ -44,7 +44,7 @@ return(
               </button>
               
               <div className="mt-3 text-center">
-              <button className="btn btn-outline-danger w-100">
+              <button className="btn btn-outline-primary w-100">
                 <img
                   src="https://developers.google.com/identity/images/g-logo.png"
                   alt="Google"
