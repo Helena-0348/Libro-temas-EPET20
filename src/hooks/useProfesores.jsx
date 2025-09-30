@@ -1,4 +1,5 @@
-import{collection, getDocs} from "firebase/firestoe";
+import{collection, getDocs} from "firebase/firestore";
+import{query, orderBy, getDocs, collection} from "firebase/firestoe";
 
 const col = collection (db, "profesores");
 const snap = await getDocs(col);
