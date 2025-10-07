@@ -3,10 +3,6 @@
     background: linear-gradient(to bottom, #00bcd4, #2b76a5);
 }
 
-.cajaCorreo {
-    background-color: #e0f7fa;
-}
-
 h1 {
     color: white;
 }
@@ -21,7 +17,7 @@ h1 {
 }
 
 .card {
-    min-height: 300px;
+    min-height: 400px;
     background-color: #ffffff;
     /* sirve para hacer mas largo el formulario */
 }
@@ -30,4 +26,9 @@ h1 {
     background-color: #00bcd4 !important;
     /* Color del boton ingresar*/
     border-color: #16bfe0 !important;
+}
+
+.logo-img {
+    width: 120px;
+    height: auto;
 }
