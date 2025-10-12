@@ -15,7 +15,6 @@ function normDia(data = {}) {
   const nclase = data.nclase ?? "";
   const tema = data.tema ?? "";
   const actividad = data.actividad ?? "";
-  const asistencia = data. ?? "";
   const libro = data.libro ?? "";
 
   return {
