@@ -6,8 +6,9 @@ import Formulario from "./components/Formulario.jsx";
 import PaginaLibro from "./components/PaginaLibro";
 import Registro from ".//components/Registro";
 import PaginaInicio from "./components/PaginaInicio";
-
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; // REACT ROUTER
+import Inicio from "./components/Inicio.jsx";
+import AltaDato from "./components/AltaDato.jsx";
 
 
 
@@ -20,14 +21,11 @@ function App() {
     return ( 
         <><Router>
             <Routes>
-                <Route path="/" element={<Formulario titulo="Formulario Email" />} />
+                <Route path="/" element={<Inicio/>} />
 
-                <Route path="/libro/*" element={<PaginaLibro />} />
+                <Route path="/*" element={<AltaDato />} />
 
-                <Route path="/inicio" element={<PaginaInicio />} />
-
-                <Route path="/registro" element={<Registro />} />
-            </Routes>
+                </Routes>
         </Router>
 </>
 

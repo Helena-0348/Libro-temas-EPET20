@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo_epet20 from "../img/logo_epet20.jpg";
+import "../css/Registro.css";
 
 
 const Registro = () => {
@@ -23,7 +24,7 @@ const handleSubmit = (e) => {
   return (
    <form onSubmit={handleSubmit} className="registro-form">
     <div className="registro-container">
-      <h1 className="registro-title">Registro</h1>
+      <h1 className="registro-title">Registro de profe o preceptor!!!!</h1>
       <div className="registro-form">
         
         <input type="text" placeholder="Gmail" className="registro-input" value={gmail} onChange={(e) => setGmail(e.target.value)} />

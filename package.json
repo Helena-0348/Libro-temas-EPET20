@@ -8,7 +8,11 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.7",
+<<<<<<< HEAD
     "firebase": "^12.3.0",
+=======
+    "firebase": "^12.2.1",
+>>>>>>> 270feb2b2bf66d15255407f4006d9070d29624a0
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.8.0",

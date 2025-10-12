@@ -10,30 +10,43 @@ import { db } from "../firebase/firebase";
 
 // --------- helpers ----------
 function toLower(s) { return (s || "").trim().toLowerCase(); }
-function normDia(data = {}) {
-  const fecha = data.fecha ?? "";
-  const nclase = data.nclase ?? "";
-  const tema = data.tema ?? "";
-  const actividad = data.actividad ?? "";
-  const asistencia = data. ?? "";
-  const libro = data.libro ?? "";
+function normProfesor(data = {}) {
+  const nombre = data.nombre ?? "";
+  const apellido = data.apellido ?? "";
+  const email = data.email ?? "";
+  const nombreLower = toLower(nombre);
+  const apellidoLower = toLower(apellido);
+  const emailLower = toLower(email);
+
+  // Para búsquedas por prefijo (startAt/endAt) conviene unificar en un solo campo:
+  const apellidoNombreLower = `${apellidoLower} ${nombreLower}`.trim();
+
+  // Keywords simples para contains/prefix (sin acentos avanzados): ENLAZA LOS DATOS
+  const keywords = Array.from(
+    new Set([
+      nombreLower,
+      apellidoLower,
+      apellidoNombreLower,
+      `${nombreLower} ${apellidoLower}`.trim()
+    ])
+  ).filter(Boolean);
 
   return {
     ...data,
-    fecha,
-    nclase,
-    unidad,
-    tema,
-    actividad,
-    asistencia,
-    libro,
+    nombre,
+    apellido,
+    email,
+    nombreLower,
+    apellidoLower,
+    emailLower,
+    apellidoNombreLower,
+    keywords
   };
 }
 
 // Construye una query flexible en base a filtros
 function buildQuery(colRef, {
   activo,             // boolean | undefined
-  libro,
   materia,            // string | undefined (array-contains)
   division,           // string | undefined (array-contains)
   emailEquals,        // string | undefined
@@ -50,7 +63,7 @@ function buildQuery(colRef, {
   if (typeof activo === "boolean") clauses.push(where("activo", "==", activo));
   if (materia) clauses.push(where("materias", "array-contains", materia));
   if (division) clauses.push(where("divisiones", "array-contains", division));
-  if (libro) clauses.push(where("libro", "array-contains", libro));
+  if (emailEquals) clauses.push(where("emailLower", "==", toLower(emailEquals)));
   if (createdFrom) clauses.push(where("createdAt", ">=", createdFrom));
   if (createdTo) clauses.push(where("createdAt", "<=", createdTo));
 
@@ -150,17 +163,47 @@ export function useProfesores() {
 
   // ------- OBTENER POR ID -------
   async function getById(id) {
-    const ref = doc(db, "dia", id);
+    const ref = doc(db, "profesores", id);
     const d = await getDoc(ref);
     return d.exists() ? { id: d.id, ...d.data() } : null;
   }
 
   // ------- SUSCRIBIRSE A UN DOC -------
   function listenById(id, cb, errCb) {
-    const ref = doc(db, "dia", id);
+    const ref = doc(db, "profesores", id);
     return onSnapshot(ref, (d) => {
       cb(d.exists() ? { id: d.id, ...d.data() } : null);
     }, errCb);
+  }
+
+  // ------- BUSCAR POR EMAIL EXACTO -------
+  async function findByEmail(email) {
+    const q = query(colRef, where("emailLower", "==", toLower(email)), limit(1));
+    const snap = await getDocs(q);
+    if (snap.empty) return null;
+    const d = snap.docs[0];
+    return { id: d.id, ...d.data() };
+  }
+
+  // ------- BÚSQUEDA POR PREFIJO (apellido + nombre) -------
+  // Requiere el campo "apellidoNombreLower" y ordenar por ese campo
+  async function searchByNombreApellido(prefix, pageSize = 25, cursor) {
+    const p = toLower(prefix);
+    const qBase = query(
+      colRef,
+      orderBy("apellidoNombreLower"),
+      // startAt y endAt con el truco del último char alto:
+      // '\uf8ff' cubre todos los strings que comienzan con p
+      ...(!cursor ? [limit(pageSize), startAfter()] : []),
+    );
+    // Firestore no soporta dinámico endAt en la misma API con string literal y prefijo fácilmente,
+    // así que estrategia alternativa: almacenar keywords y usar filtro client-side.
+    // Implementación práctica: descargamos lote chico y filtramos en front.
+    const snap = await getDocs(qBase);
+    const rows = snap.docs
+      .map((d) => ({ id: d.id, ...d.data() }))
+      .filter((r) => (r.apellidoNombreLower || "").startsWith(p));
+    return rows;
   }
 
   // ------- CONTEOS (total / activos) -------
@@ -184,36 +227,41 @@ export function useProfesores() {
   }
 
   // Crear con ID propio (opcional)
-  async function crearDiaConId(id, data) {
-    const ref = doc(db, "dia", id);
+  async function crearProfesorConId(id, data) {
+    const ref = doc(db, "profesores", id);
     const payload = {
       activo: true,
-      ...normDia(data),
+      ...normProfesor(data),
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
     };
     await setDoc(ref, payload);
   }
 
-  async function actualizarDia(id, data) {
-    const ref = doc(db, "dia", id);
-    const payload = { ...normDia(data), updatedAt: serverTimestamp() };
+  async function actualizarProfesor(id, data) {
+    const ref = doc(db, "profesores", id);
+    const payload = { ...normProfesor(data), updatedAt: serverTimestamp() };
     await updateDoc(ref, payload);
   }
 
-  async function eliminarDia(id) {
-    await deleteDoc(doc(db, "dia", id));
+  async function eliminarProfesor(id) {
+    await deleteDoc(doc(db, "profesores", id));
+  }
+
+  // Borrado lógico
+  async function desactivarProfesor(id) {
+    await updateDoc(doc(db, "profesores", id), { activo: false, updatedAt: serverTimestamp() });
   }
 
   // ------- ARRAYS: materias / divisiones -------
   async function agregarMateria(id, materia) {
-    await updateDoc(doc(db, "dia", id), { materias: arrayUnion(materia), updatedAt: serverTimestamp() });
+    await updateDoc(doc(db, "profesores", id), { materias: arrayUnion(materia), updatedAt: serverTimestamp() });
   }
   async function quitarMateria(id, materia) {
-    await updateDoc(doc(db, "dia", id), { materias: arrayRemove(materia), updatedAt: serverTimestamp() });
+    await updateDoc(doc(db, "profesores", id), { materias: arrayRemove(materia), updatedAt: serverTimestamp() });
   }
   async function agregarDivision(id, division) {
-    await updateDoc(doc(db, "dia", id), { divisiones: arrayUnion(division), updatedAt: serverTimestamp() });
+    await updateDoc(doc(db, "profesores", id), { divisiones: arrayUnion(division), updatedAt: serverTimestamp() });
   }
   async function quitarDivision(id, division) {
     await updateDoc(doc(db, "profesores", id), { divisiones: arrayRemove(division), updatedAt: serverTimestamp() });
