@@ -36,7 +36,6 @@ function buildQuery(colRef, {
   libro,
   materia,            // string | undefined (array-contains)
   division,           // string | undefined (array-contains)
-  emailEquals,        // string | undefined
   createdFrom,        // Timestamp/Date | undefined
   createdTo,          // Timestamp/Date | undefined
   sortBy = "createdAt",
@@ -76,7 +75,7 @@ export function useProfesores() {
   // Suscripción actual (para poder desmontar al cambiar filtros)
   const unsubRef = useRef(null);
 
-  const colRef = useMemo(() => collection(db, "profesores"), []);
+  const colRef = useMemo(() => collection(db, "dia"), []);
 
   // ------- LISTADO EN TIEMPO REAL (con filtros básicos) -------
   // Llama a listen({ filtros... }) cuando quieras escuchar en vivo.
@@ -173,10 +172,10 @@ export function useProfesores() {
   }
 
   // ------- ALTAS / EDICIONES / BAJAS -------
-  async function crearProfesor(data) {
+  async function crearDia(data) {
     const payload = {
       activo: true,
-      ...normProfesor(data),
+      ...numDia(data),
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
     };
@@ -188,7 +187,7 @@ export function useProfesores() {
     const ref = doc(db, "dia", id);
     const payload = {
       activo: true,
-      ...normDia(data),
+      ...numDia(data),
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
     };
@@ -197,7 +196,7 @@ export function useProfesores() {
 
   async function actualizarDia(id, data) {
     const ref = doc(db, "dia", id);
-    const payload = { ...normDia(data), updatedAt: serverTimestamp() };
+    const payload = { ...numDia(data), updatedAt: serverTimestamp() };
     await updateDoc(ref, payload);
   }
 
@@ -216,7 +215,7 @@ export function useProfesores() {
     await updateDoc(doc(db, "dia", id), { divisiones: arrayUnion(division), updatedAt: serverTimestamp() });
   }
   async function quitarDivision(id, division) {
-    await updateDoc(doc(db, "profesores", id), { divisiones: arrayRemove(division), updatedAt: serverTimestamp() });
+    await updateDoc(doc(db, "dia", id), { divisiones: arrayRemove(division), updatedAt: serverTimestamp() });
   }
 
   // ------- PAGINAR LISTAS MANUALES (fetch once) -------
@@ -228,13 +227,13 @@ export function useProfesores() {
   }
 
   // ------- BATCH IMPORT -------
-  async function importarProfesores(arrayDeProfesores = []) {
+  async function importarDia(arrayDia = []) {
     const batch = writeBatch(db);
-    arrayDeProfesores.forEach((p) => {
-      const ref = doc(collection(db, "profesores"));
+    arrayDia.forEach((p) => {
+      const ref = doc(collection(db, "dia"));
       batch.set(ref, {
         activo: true,
-        ...normProfesor(p),
+        ...numDia(p),
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
       });
@@ -242,36 +241,28 @@ export function useProfesores() {
     await batch.commit();
   }
 
-  // ------- PATRÓN SIMPLE DE UNICIDAD DE EMAIL (client-side) -------
-  // Nota: Firestore no tiene restricciones únicas nativas. Esto previene duplicados "en la práctica".
-  // Para 100% robustez, usar un doc espejo /profesores_emails/{emailLower} con transacción o un Cloud Function.
-  async function crearSiEmailUnico(data) {
-    const existente = await findByEmail(data.email);
-    if (existente) throw new Error("Ya existe un profesor con ese email.");
-    return crearProfesor(data);
-  }
 
   // Variante más robusta (transacción con doc espejo):
-  async function crearConEmailUnicoTransaccional(data) {
-    const emailLower = toLower(data.email);
-    const mirrorRef = doc(db, "profesores_emails", emailLower);
-    const profRef = doc(collection(db, "profesores"));
-    await runTransaction(db, async (tx) => {
-      const mirrorSnap = await tx.get(mirrorRef);
-      if (mirrorSnap.exists()) throw new Error("Email ya registrado.");
-      tx.set(profRef, {
-        activo: true,
-        ...normProfesor(data),
-        createdAt: serverTimestamp(),
-        updatedAt: serverTimestamp(),
-      });
-      tx.set(mirrorRef, { profesorId: profRef.id, createdAt: serverTimestamp() });
-    });
-  }
+  // async function crearConEmailUnicoTransaccional(data) {
+  //   const emailLower = toLower(data.email);
+  //   const mirrorRef = doc(db, "profesores_emails", emailLower);
+  //   const profRef = doc(collection(db, "profesores"));
+  //   await runTransaction(db, async (tx) => {
+  //     const mirrorSnap = await tx.get(mirrorRef);
+  //     if (mirrorSnap.exists()) throw new Error("Email ya registrado.");
+  //     tx.set(profRef, {
+  //       activo: true,
+  //       ...normProfesor(data),
+  //       createdAt: serverTimestamp(),
+  //       updatedAt: serverTimestamp(),
+  //     });
+  //     tx.set(mirrorRef, { profesorId: profRef.id, createdAt: serverTimestamp() });
+  //   });
+  // }
 
   // ------- CAMPOS CONTADORES (ejemplo) -------
   async function incrementarCampo(id, campo = "cargas") {
-    await updateDoc(doc(db, "profesores", id), { [campo]: increment(1), updatedAt: serverTimestamp() });
+    await updateDoc(doc(db, "dia", id), { [campo]: increment(1), updatedAt: serverTimestamp() });
   }
 
   // Limpiar suscripción al desmontar
@@ -291,13 +282,13 @@ export function useProfesores() {
     fetchNextPage,
 
     // CRUD
-    crearProfesor,
-    crearProfesorConId,
-    crearSiEmailUnico,
-    crearConEmailUnicoTransaccional,
-    actualizarProfesor,
-    eliminarProfesor,
-    desactivarProfesor,
+    crearDia,
+    crearDiaConId,
+    // crearSiEmailUnico,
+    // crearConEmailUnicoTransaccional,
+    actualizarDia,
+    eliminarDia,
+    //desactivarProfesor,
 
     // arrays
     agregarMateria, quitarMateria,
@@ -306,13 +297,13 @@ export function useProfesores() {
     // lecturas
     getById,
     listenById,
-    findByEmail,
-    searchByNombreApellido,
+    //findByEmail,
+    searchByID,
     countAll,
     listarActivos,
 
     // utilitarios
-    importarProfesores,
+    importarDIa,
     incrementarCampo,
   };
 }
