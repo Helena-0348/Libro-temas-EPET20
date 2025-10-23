@@ -1,40 +1,49 @@
+// src/components/AltaDato.jsx
 import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase.jsx';
 
 const AltaDato = () => {
+  // Estados para cada campo del formulario
   const [nombre, setNombre] = useState('');
   const [gmail, setGmail] = useState('');
   const [curso, setCurso] = useState('');
   const [division, setDivision] = useState('');
   const [codigo, setCodigo] = useState('');
 
+  // Función que se ejecuta al enviar el formulario
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const docRef = await addDoc(collection(db, "profesores"), {
-        nombre: nombre,
-        gmail: gmail,
-        curso: curso,
-        division: division,
-        codigo: codigo,
-      });
-      console.log("Documento escrito con ID: ", docRef.id);
+    e.preventDefault(); // Evita recargar la página
 
-      // Limpiar el formulario
+    try {
+      // Guardamos los datos en la colección "profesores"
+      const docRef = await addDoc(collection(db, "profesores"), {
+        nombre,
+        gmail,
+        curso,
+        division,
+        codigo,
+      });
+
+      console.log("Profesor agregado con ID:", docRef.id);
+
+      // Limpiamos el formulario
       setNombre('');
       setGmail('');
       setCurso('');
       setDivision('');
       setCodigo('');
-    } catch (e) {
-      console.error("Error al agregar documento: ", e);
+
+      alert("Profesor agregado correctamente ✅");
+
+    } catch (error) {
+      console.error("Error al agregar profesor:", error);
     }
   };
 
   return (
     <div>
-      <h2>Agregar Nuevo Dato</h2>
+      <h2>Agregar Nuevo Profesor</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -71,7 +80,7 @@ const AltaDato = () => {
           placeholder="Código"
           required
         />
-        <button type="submit">Agregar</button>
+        <button type="submit">Agregar Profesor</button>
       </form>
     </div>
   );

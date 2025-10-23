@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo_epet20 from "../img/logo_epet20.jpg";
 import "../css/Registro.css";
+import ContactoInfo from './ContactoInfo';
 
 
 const Registro = () => {
@@ -24,7 +25,7 @@ const handleSubmit = (e) => {
   return (
    <form onSubmit={handleSubmit} className="registro-form">
     <div className="registro-container">
-      <h1 className="registro-title">Registro de profe o preceptor!!!!</h1>
+      <h1 className="registro-title">Bienvenido(a) Profesor(a) o Preceptor(a) - Inicie Sesión</h1>
       <div className="registro-form">
         
         <input type="text" placeholder="Gmail" className="registro-input" value={gmail} onChange={(e) => setGmail(e.target.value)} />
@@ -40,8 +41,10 @@ const handleSubmit = (e) => {
         <img src={logo_epet20} alt=" E.P.E.T. N° 20 NEUQUÉN " />
       </div>
       <link  type='submit' to="/otra-pagina"  className="registro-link"Ir a otra página />
+<ContactoInfo></ContactoInfo>
     </div>
     </form>
+
 
   );
 };
