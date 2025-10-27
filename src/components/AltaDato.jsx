@@ -1,7 +1,7 @@
 // src/components/AltaDato.jsx
 import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../firebase/firebase.jsx';
+import { db } from '../Firebase.jsx';
 
 const AltaDato = () => {
   // Estados para cada campo del formulario
