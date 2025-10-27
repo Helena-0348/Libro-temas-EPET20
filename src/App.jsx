@@ -11,6 +11,10 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Inicio from "./components/Inicio.jsx";
 import AltaDato from "./components/AltaDato.jsx";
 
+import {gapi} from './gapi-script'
+import {GoogleLogin} from 'react';
+import {useEffect} from 'react';
+
 
 
 //import FormularioNombreApellido from "./components/formularioNombreApellido";
