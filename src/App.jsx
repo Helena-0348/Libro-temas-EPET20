@@ -23,6 +23,16 @@ import {useEffect} from 'react';
 
 
 function App() {
+    const clientID = "708906424877-o70nuhn5qnk6gcjm9sc3rcvbkdh3o4b8.apps.googleusercontent.com"
+    useEffect()=> {
+        const start = () => {
+            gapi.auth2.init({
+
+            clientID: clientID;
+            })
+        }
+        gapi.load("client:auth2", start)
+    }, [])
     return ( 
         
         <><Router>
