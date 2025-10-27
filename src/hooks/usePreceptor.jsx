@@ -363,6 +363,4 @@ export function usePreceprtores() {
     importarPreceprtores,
     incrementarCampo,
   };
-}
-
-export default usePreceprtores;
+}     
