@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../firebase/firebase.jsx';
+import { db } from '../Firebase.jsx';
 
 const AltaDato = () => {
   const [nombre, setNombre] = useState('');

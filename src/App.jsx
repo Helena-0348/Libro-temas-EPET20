@@ -20,7 +20,9 @@ import AltaDato from "./components/AltaDato.jsx";
 
 function App() {
     return ( 
+        
         <><Router>
+            
             <Routes>
 
                 <Route path="/" element={<Home titulo="Formulario Email" />} />
