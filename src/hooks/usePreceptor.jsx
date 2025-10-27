@@ -364,3 +364,5 @@ export function usePreceprtores() {
     incrementarCampo,
   };
 }
+
+export default usePreceprtores;
