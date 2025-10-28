@@ -55,7 +55,7 @@ function App() {
 
           {/* Otras páginas que tenías */}
           <Route path="/Googlelogin" element={<GoogleLogin />} />
-          <Route path="/paginaLibro" element={<PaginaLibro />} />
+          <Route path="/libro" element={<PaginaLibro />} />
           <Route path="/registro" element={<Registro />} />
 
 
