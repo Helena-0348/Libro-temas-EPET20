@@ -10,17 +10,22 @@ import Registro from "./components/Registro";
 import PaginaInicio from "./components/PaginaInicio";
 import Inicio from "./components/Inicio.jsx";
 import AltaDato from "./components/AltaDato.jsx";
-import {gapi} from './gapi-script'
-import {GoogleLogin} from 'react';
-import {useEffect} from 'react';
+//import {gapi} from './gapi-script'
+//import {useEffect} from 'react';
 import ListadoDatos from "./components/listadoDatos.jsx";
-//import FormularioNombreApellido from "./components/formularioNombreApellido";
+import './css/App.css'; // añade si no está
+import GoogleLogin from "./components/GoogleLogin.jsx";
+
+//import FormularioNombreApellido.from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
 function App() {
   return (
-    <Router>
-      <div style={{ padding: "20px" }}>
-        <h1>📘 Libro de Materias </h1>
+    
+     
+      <div className="app__page">
+        <header className="app__header">
+          <h1 className="app__title">📘 Libro de Temas</h1>
+        </header>
 
         <Routes>
    
@@ -51,7 +56,7 @@ function App() {
           />
 
           {/* Otras páginas que tenías */}
-          <Route path="/formulario" element={<Formulario />} />
+          <Route path="/Googlelogin" element={<GoogleLogin />} />
           <Route path="/paginaLibro" element={<PaginaLibro />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/paginaInicio" element={<PaginaInicio />} />
@@ -60,7 +65,7 @@ function App() {
           <Route path="*" element={<Inicio />} />
         </Routes>
       </div>
-    </Router>
+     
   );
 }
 

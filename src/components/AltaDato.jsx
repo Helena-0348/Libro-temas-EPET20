@@ -1,7 +1,7 @@
 // src/components/AltaDato.jsx
 import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../Firebase.jsx';
+import { db } from '../firebase/firebase.jsx';
 
 const AltaDato = () => {
   // Estados para cada campo del formulario
@@ -43,7 +43,7 @@ const AltaDato = () => {
 
   return (
     <div>
-      <h2>Agregar Nuevo Profesor</h2>
+      <h2>Agregar Nuevo Profesor</h2>ñ
       <form onSubmit={handleSubmit}>
         <input
           type="text"
