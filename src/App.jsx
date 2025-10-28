@@ -22,17 +22,15 @@ function App() {
   return (
     
      
-      <div className="app__page">
-        <header className="app__header">
-          <h1 className="app__title">📘 Libro de Temas</h1>
-        </header>
+      <div >
+       
 
         <Routes>
    
         
         
           {/* Ruta de inicio */}
-          <Route path="/" element={<Home titulo="Formulario Email" />} />
+          <Route path="/" element={<Home  />} />
 
           {/* Otra página de inicio */}
           <Route path="/inicio" element={<Inicio />} />
@@ -59,7 +57,7 @@ function App() {
           <Route path="/Googlelogin" element={<GoogleLogin />} />
           <Route path="/paginaLibro" element={<PaginaLibro />} />
           <Route path="/registro" element={<Registro />} />
-          <Route path="/paginaInicio" element={<PaginaInicio />} />
+
 
           {/* Ruta comodín: si no existe, muestra Inicio */}
           <Route path="*" element={<Inicio />} />

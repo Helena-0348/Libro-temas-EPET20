@@ -4,7 +4,8 @@ import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../firebase/firebase'; // ✅ Ajusta la ruta según tu estructura real
 import { useUser } from '../context/useUser'; // ✅ Asegúrate de que esta ruta sea correcta
 import '../css/GoogleLogin.css';
-
+import logo from "../img/logo_epet20.jpg"
+import googleLogo from "../img/foto_google.jpg"
 const GoogleLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -29,7 +30,7 @@ const GoogleLogin = () => {
         });
       }
 
-      navigate('/paginaInicio'); // ✅ Ajusta la ruta según tus rutas reales
+      navigate('/registro'); // ✅ Ajusta la ruta según tus rutas reales
     } catch (err) {
       console.error('Error en login con Google:', err);
       setError('Error al iniciar sesión con Google. Intenta nuevamente.');
@@ -43,7 +44,7 @@ const GoogleLogin = () => {
       <div className="google__card">
         <div className="google__left" aria-hidden="true">
           <img
-            src="/images/epet-foto.jpg"
+            src={logo}
             alt="Foto de la escuela"
             className="google__school"
           />
@@ -65,7 +66,7 @@ const GoogleLogin = () => {
             aria-disabled={loading}
           >
             <img
-              src="https://developers.google.com/identity/images/g-logo.png"
+              src={googleLogo}
               alt="Logo de Google"
               className="google__logo"
               width="18"

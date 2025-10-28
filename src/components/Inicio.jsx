@@ -25,13 +25,13 @@ function Inicio() {
             
             {/* Título de Bienvenida */}
             <div className="titulo-y-descripcion">
-                <h1 className="titulo-seccion-principal">Bienvenido al Libro de Temas Digital</h1>
+                <h1 className="titulo-seccion-principal">Bienvenido  ("prof@,prece") Libro de Temas Digital</h1>
                 
                 <p className="descripcion">
-                  La **EPET N° 20 (Escuela Provincial de Enseñanza Técnica N° 20)** de Neuquén es una institución educativa técnica ubicada en Lanín 2020, Neuquén, preparando a los estudiantes con .
+                  La EPET N° 20 (Escuela Provincial de Enseñanza Técnica N° 20) de Neuquén es una institución educativa técnica ubicada en Lanín 2020, Neuquén, preparando a los estudiantes con .
                 </p>
                 <p className="descripcion">
-                  Utiliza este sistema para gestionar y consultar la información académica del .
+                  Utiliza este sistema para gestionar y consultar la información académica de los cursos : {}
                 </p>
             </div>
           </div>
@@ -42,16 +42,11 @@ function Inicio() {
         <div className="columna-accesos">
           <h3>Accesos Rápidos</h3>
           
-          <Link to="/registro">
-            <button className="btn-registro-acceso">
-              IR A REGISTRO
-            </button>
-          </Link>
+          
           
           <nav className="enlaces-rapidos">
             <Link to="/" className="link-rapido">Inicio</Link>
             <Link to="/libro-de-temas" className="link-rapido">Libro de temas</Link>
-            <Link to="/epet20" className="link-rapido">Página Epet20</Link>
           </nav>
         </div>
       </div><ContactoInfo />
