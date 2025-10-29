@@ -14,6 +14,7 @@ const Tabla = () => {
             <a className = 'celdaP'>no</a>
             <a className = 'celdaP'>Confirmacion Preceptor</a>
             </div>
+            
             <Fila></Fila>
             <Fila></Fila>
             <Fila></Fila>
