@@ -15,7 +15,8 @@ import AltaDato from "./components/AltaDato.jsx";
 import ListadoDatos from "./components/listadoDatos.jsx";
 import './css/App.css'; // añade si no está
 import GoogleLogin from "./components/GoogleLogin.jsx";
-import DiaLibro from "./components/LibroCrudo.jsx";
+import DiaLibro from "./components/DiaLibro.jsx";
+import ShowDias from "./components/ShowDias.jsx";
 //import FormularioNombreApellido.from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
 function App() {
@@ -58,7 +59,7 @@ function App() {
           <Route path="/libro" element={<PaginaLibro />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/dia" element={<DiaLibro />} />
-
+          <Route path="/muestraD" element={<ShowDias />} />
 
           {/* Ruta comodín: si no existe, muestra Inicio */}
           <Route path="*" element={<Inicio />} />
