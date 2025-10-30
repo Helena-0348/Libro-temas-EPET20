@@ -4,82 +4,112 @@ import { db } from '../firebase/firebase.jsx';
 
 const DiaLibro = () => {
   // Estados para cada campo del formulario
-  const [fecha, setFecha] = useState('');
   const [nClase, setnClase] = useState('');
   const [unidad, setUnidad] = useState('');
   const [tema, setTema] = useState('');
-  const [codigo, setCodigo] = useState('');
+  const [actividad, setActividad] = useState('');
+  const [asistencia, setAsistencia] = useState('');
+  const [confirmacion, setConfirmacion] = useState(false); 
 
   // Función que se ejecuta al enviar el formulario
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Evita recargar la página
+    e.preventDefault();
 
     try {
-      // Guardamos los datos en la colección "profesores"
+      // Guardamos los datos en la colección "dias"
       const docRef = await addDoc(collection(db, "dias"), {
-        fecha,
         nClase,
         unidad,
         tema,
-        codigo,
+        actividad,
+        asistencia,
+        confirmacion,
       });
 
-      console.log("dia agregado con ID:", docRef.id);
+      console.log("Día agregado con ID:", docRef.id);
 
       // Limpiamos el formulario
-      setFecha('');
       setnClase('');
       setUnidad('');
       setTema('');
-      setCodigo('');
+      setActividad('');
+      setAsistencia('');
+      setConfirmacion(false);
 
-      alert("Dia guardado correctamente");
-
+      alert("Día guardado correctamente");
     } catch (error) {
-      console.error("Error al agregar dia:", error);
+      console.error("Error al agregar día:", error);
     }
   };
 
   return (
     <div>
-      <h2>Cargar dia</h2>ñ
+      <h2>Cargar día</h2>
+
       <form onSubmit={handleSubmit}>
         <input
-          type="text"
-          value={fecha}
-          onChange={(e) => setFecha(e.target.value)}
-          placeholder="Fecha"
-          required
-        />
-        <input
-          type="tetx"
+          type="text" 
           value={nClase}
           onChange={(e) => setnClase(e.target.value)}
-          placeholder="nClase"
+          placeholder="N° de clase"
           required
         />
         <input
-          type="text"
+          type="number"
           value={unidad}
           onChange={(e) => setUnidad(e.target.value)}
-          placeholder="unidad"
+          placeholder="Unidad"
           required
         />
         <input
           type="text"
           value={tema}
           onChange={(e) => setTema(e.target.value)}
-          placeholder="tema"
+          placeholder="Tema"
           required
         />
         <input
           type="text"
-          value={codigo}
-          onChange={(e) => setCodigo(e.target.value)}
-          placeholder="Código"
+          value={actividad}
+          onChange={(e) => setActividad(e.target.value)}
+          placeholder="Actividad del día"
           required
         />
-        <button type="submit">Guardar dia</button>
+
+        <p>¿Asistio el profesor?</p>
+        <label>
+          <input
+            type="radio"
+            name="asistencia"
+            value="sí"
+            checked={asistencia === "sí"}
+            onChange={(e) => setAsistencia(e.target.value)}
+          />
+          Sí
+        </label>
+
+        <label style={{ marginLeft: "1rem" }}>
+          <input
+            type="radio"
+            name="asistencia"
+            value="no"
+            checked={asistencia === "no"}
+            onChange={(e) => setAsistencia(e.target.value)}
+          />
+          No
+          
+        </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={confirmacion}
+              onChange={(e) => setConfirmacion(e.target.checked)}
+            />
+            Confirmacion del Preceptor
+          </label>
+
+        <br /><br />
+        <button type="submit">Guardar día</button>
       </form>
     </div>
   );

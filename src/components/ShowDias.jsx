@@ -18,7 +18,7 @@ function ShowDias() {
 
   return (
     <div>
-      <h2>Datos de la colección "dias"</h2>
+      <h2>Datos de la colección dias</h2>
       <ul>
         {datos.map(item => (
           <li key={item.id}>
