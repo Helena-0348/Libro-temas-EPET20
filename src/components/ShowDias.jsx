@@ -15,16 +15,19 @@ function ShowDias() {
 
     obtenerDatos();
   }, []);
-
   return (
     <div>
       <h2>Datos de la colección dias</h2>
       <ul>
         {datos.map(item => (
           <li key={item.id}>
-            <strong>Fecha:</strong> {item.fecha} <br />
+            <strong>Numero de Clase:</strong> {item.nClase} <br />
+            <strong>Unidad:</strong> {item.unidad} <br />
             <strong>Tema:</strong> {item.tema} <br />
-            <strong>Unidad:</strong> {item.unidad}
+            <strong>Actividad:</strong> {item.actividad} <br />
+            <strong>Asistencia del profesor:</strong> {item.asistencia} <br />
+            <strong>Confirmacion:</strong> {item.confirmacion} <br />
+
           </li>
         ))}
       </ul>
