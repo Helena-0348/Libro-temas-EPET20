@@ -17,6 +17,7 @@ import './css/App.css'; // añade si no está
 import GoogleLogin from "./components/GoogleLogin.jsx";
 import DiaLibro from "./components/DiaLibro.jsx";
 import ShowDias from "./components/ShowDias.jsx";
+import MesLibro from "./components/MesLibro.jsx";
 //import FormularioNombreApellido.from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
 function App() {
@@ -60,6 +61,7 @@ function App() {
           <Route path="/registro" element={<Registro />} />
           <Route path="/dia" element={<DiaLibro />} />
           <Route path="/muestraD" element={<ShowDias />} />
+          <Route path="/mes" element={<MesLibro />} />
 
           {/* Ruta comodín: si no existe, muestra Inicio */}
           <Route path="*" element={<Inicio />} />
