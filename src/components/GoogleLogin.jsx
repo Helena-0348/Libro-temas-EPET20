@@ -6,6 +6,8 @@ import { useUser } from '../context/useUser'; // ✅ Asegúrate de que esta ruta
 import '../css/GoogleLogin.css';
 import logo from "../img/logo_epet20.jpg"
 import googleLogo from "../img/foto_google.jpg"
+import LetrasEpet from "./LetrasEpet";
+import ContactoInfo from "./ContactoInfo"
 const GoogleLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -40,8 +42,13 @@ const GoogleLogin = () => {
   };
 
   return (
+
+    <div>
+      <LetrasEpet/>
     <main className="google__hero" aria-label="Iniciar sesión con Google">
+      
       <div className="google__card">
+        
         <div className="google__left" aria-hidden="true">
           <img
             src={logo}
@@ -77,6 +84,8 @@ const GoogleLogin = () => {
         </div>
       </div>
     </main>
+    <ContactoInfo/>
+    </div>
   );
 };
 

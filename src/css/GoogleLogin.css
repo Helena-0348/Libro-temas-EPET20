@@ -1,37 +1,96 @@
 .google__hero {
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px;
-  box-sizing: border-box;
-  background: #00b6e6; /* color de fondo parecido a tu imagen */
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    box-sizing: border-box;
+    background: #00b6e6;
+    /* color de fondo parecido a tu imagen */
 }
+
 .google__card {
-  display: flex;
-  gap: 28px;
-  background: #fff;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-  max-width: 900px;
-  width: 100%;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    width: 100%;
+    min-height: 480px;
+    align-items: center;
 }
-.google__left { flex: 0 0 260px; display:flex; align-items:center; justify-content:center; }
-.google__school { width:220px; height:220px; object-fit:cover; border-radius:16px; }
-.google__right { flex:1; display:flex; flex-direction:column; gap:16px; }
-.google__title { margin:0; font-size:28px; color:#1b4b72; }
-.google__error { color:#b00020; background:#fdecea; padding:8px 10px; border-radius:8px; }
+
+.google__left {
+    flex: 0 0 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.google__school {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.google__right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+}
+
+.google__title {
+    margin: 0;
+    font-size: 28px;
+    color: #1b4b72;
+}
+
+.google__error {
+    color: #b00020;
+    background: #fdecea;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+
 .google__btn {
-  display:inline-flex; align-items:center; gap:12px;
-  padding:12px 18px; border-radius:28px; border:1px solid rgba(0,0,0,0.06);
-  background:#fff; cursor:pointer; font-size:16px; color:#1b4b72;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    color: #1b4b72;
 }
-.google__btn:disabled { opacity:0.6; cursor:default; }
-.google__logo { display:inline-block; }
+
+.google__btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.google__logo {
+    display: inline-block;
+}
+
 @media (max-width:840px) {
-  .google__card { flex-direction:column; gap:16px; }
-  .google__school { width:160px; height:160px; }
-  .google__btn { width:100%; justify-content:center; }
+    .google__card {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .google__school {
+        width: 160px;
+        height: 160px;
+    }
+    .google__btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
