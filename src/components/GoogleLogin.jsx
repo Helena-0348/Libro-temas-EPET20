@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from '../firebase/firebase'; // ✅ Ajusta la ruta según tu estructura real
-import { useUser } from '../context/useUser'; // ✅ Asegúrate de que esta ruta sea correcta
+import { auth, provider } from '../firebase/firebase'; //Ajusta la ruta según tu estructura real
+import { useUser } from '../context/useUser'; // Asegura que esta ruta sea correcta
 import '../css/GoogleLogin.css';
 import logo from "../img/logo_epet20.jpg"
 import googleLogo from "../img/foto_google.jpg"
