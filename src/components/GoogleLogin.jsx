@@ -11,7 +11,7 @@ import ContactoInfo from "./ContactoInfo"
 const GoogleLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const { login } = useUser(); // asegúrate de que tu contexto exporte `login`
+  const { login } = useUser(); // asegúrate de que exporte `login`
   const navigate = useNavigate();
 
   const handleGoogle = async () => {
@@ -22,7 +22,7 @@ const GoogleLogin = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      // Si tu UserContext usa otra estructura, ajusta esto
+    
       if (login) {
         login({
           uid: user.uid,
@@ -32,7 +32,7 @@ const GoogleLogin = () => {
         });
       }
 
-      navigate('/registro'); // ✅ Ajusta la ruta según tus rutas reales
+      navigate('/registro'); //Ajusta la ruta según las rutas reales
     } catch (err) {
       console.error('Error en login con Google:', err);
       setError('Error al iniciar sesión con Google. Intenta nuevamente.');
