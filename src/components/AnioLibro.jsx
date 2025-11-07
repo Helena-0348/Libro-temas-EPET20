@@ -1,34 +1,33 @@
-// src/components/AltaDato.jsx
 import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase.jsx';
 
-const MesLibro = () => {
-  // Estados para cada campo del formulario
+const AnioLibro = () => {
   const [numMes, setNumMes] = useState('');
   const [cantD, setCantD] = useState('');
   const [dia, setDia] = useState('');
 
-  // Función que se ejecuta al enviar el formulario
   const handleSubmit = async (e) => {
     e.preventDefault(); // Evita recargar la página
 
     try {
       const docRef = await addDoc(collection(db, "meses"), {
         numMes:Number(numMes),
-        // cantD:Number(cantD),
-        dia
+        cantD:Number(cantD),
+        dia,
       });
+
+      console.log("Profesor agregado con ID:", docRef.id);
 
       // Limpiamos el formulario
       setNumMes('');
-      // setCantD('');
+      setCantD('');
       setDia('');
 
-      alert("mes agregado correctamente");
+      alert("Profesor agregado correctamente ");
 
     } catch (error) {
-      console.error("Error al agregar mes:", error);
+      console.error("Error al agregar profesor:", error);
     }
   };
 
@@ -43,17 +42,17 @@ const MesLibro = () => {
           <input
             id="mes"
             type="range"
-            min="3"
-            max="11"
+            min="1"
+            max="12"
             step="1"
             value={numMes}
             onChange={(e) => setNumMes(e.target.value)}
           />
 
          <label htmlFor="cantD">
-            Dias de clase: {cantD}
+            Cantidad de dias: {cantD}
           </label>
-          {/* <input
+          <input
             id="cantD"
             type="range"
             min="1"
@@ -61,7 +60,7 @@ const MesLibro = () => {
             step="1"
             value={cantD}
             onChange={(e) => setCantD(e.target.value)}
-          /> */}
+          />
         <input
           type="text"
           value={dia}
@@ -75,4 +74,4 @@ const MesLibro = () => {
   );
 };
 
-export default MesLibro;
+export default AnioLibro;

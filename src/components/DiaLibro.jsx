@@ -20,7 +20,7 @@ const DiaLibro = () => {
       const docRef = await addDoc(collection(db, "dias"), {
         nClase,
         unidad,
-        tema,
+        tema,//poner condiciones ,no caracteres esperciales, numeros si
         actividad,
         asistencia,
         confirmacion,

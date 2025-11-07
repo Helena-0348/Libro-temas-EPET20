@@ -1,4 +1,3 @@
-// src/App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -10,7 +9,7 @@ import Registro from "./components/Registro";
 import PaginaInicio from "./components/PaginaInicio";
 import Inicio from "./components/Inicio.jsx";
 import AltaDato from "./components/AltaDato.jsx";
-//import {gapi} from './gapi-script'
+import PaginaMateria from "./components/PaginaMateria.jsx";//import {gapi} from './gapi-script'
 //import {useEffect} from 'react';
 import ListadoDatos from "./components/listadoDatos.jsx";
 import './css/App.css'; // añade si no está
@@ -18,6 +17,7 @@ import GoogleLogin from "./components/GoogleLogin.jsx";
 import DiaLibro from "./components/DiaLibro.jsx";
 import ShowDias from "./components/ShowDias.jsx";
 import MesLibro from "./components/MesLibro.jsx";
+import ListaMaterias from "./components/ListaMaterias.jsx";
 //import FormularioNombreApellido.from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
 function App() {
@@ -63,6 +63,9 @@ function App() {
           <Route path="/muestraD" element={<ShowDias />} />
           <Route path="/mes" element={<MesLibro />} />
 
+          <Route path="/materia" element={<PaginaMateria />} />
+          <Route path="/lista" element={<ListaMaterias />} />
+
           {/* Ruta comodín: si no existe, muestra Inicio */}
           <Route path="*" element={<Inicio />} />
         </Routes>
@@ -72,55 +75,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-// import React from 'react'
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-        
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-        
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
