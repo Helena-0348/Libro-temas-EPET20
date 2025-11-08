@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebase";
-import DiasMateria from "./DiasMateria"; // componente que muestra los días
+import DiaLibro from "./DiaLibro";
 
 const ListarMaterias = () => {
   const [materias, setMaterias] = useState([]);
@@ -40,7 +40,7 @@ const ListarMaterias = () => {
       </ul>
 
       {materiaSeleccionada && (
-        <DiasMateria materia={materiaSeleccionada} />
+        <DiaLibro materia={materiaSeleccionada} />
       )}
     </div>
   );
