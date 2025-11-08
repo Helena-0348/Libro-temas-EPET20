@@ -15,8 +15,9 @@ import ListadoDatos from "./components/listadoDatos.jsx";
 import './css/App.css'; // añade si no está
 import GoogleLogin from "./components/GoogleLogin.jsx";
 import DiaLibro from "./components/DiaLibro.jsx";
-import ShowDias from "./components/ShowDias.jsx";
 import ListaMaterias from "./components/ListaMaterias.jsx";
+import Cursos from "./components/Cursos.jsx";
+import ListaCursos from "./components/ListaCursos.jsx";
 //import FormularioNombreApellido.from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
 function App() {
@@ -63,6 +64,8 @@ function App() {
           <Route path="/materia" element={<PaginaMateria />} />
           <Route path="/lista" element={<ListaMaterias />} />
 
+          <Route path="/cursos" element={<Cursos />} />
+          <Route path="/listaC" element={<ListaCursos />} />        
           {/* Ruta comodín: si no existe, muestra Inicio */}
           <Route path="*" element={<Inicio />} />
         </Routes>

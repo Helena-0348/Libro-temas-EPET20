@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Materias from "./Materias";
-import DiasMateria from "./DiasMateria";
+import DiaLibro from "./DiaLibro";
 
 const PaginaMateria = () => {
   const [materiaSeleccionada, setMateriaSeleccionada] = useState(null);
@@ -8,10 +8,6 @@ const PaginaMateria = () => {
   return (
     <div>
       <Materias onMateriaSeleccionada={setMateriaSeleccionada} />
-      <hr />
-      {materiaSeleccionada && (
-        <DiasMateria materiaId={materiaSeleccionada} />
-      )}
     </div>
   );
 };
