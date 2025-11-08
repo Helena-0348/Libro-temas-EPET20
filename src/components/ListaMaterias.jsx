@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import DiaLibro from "./DiaLibro";
 
 const ListarMaterias = () => {
   const [materias, setMaterias] = useState([]);
   const [materiaSeleccionada, setMateriaSeleccionada] = useState(null);
+
+  const [editNombre, setEditNombre] = useState("");
+  const [editAnio, setEditAnio] = useState("");
+  const [editProfesor, setEditProfesor] = useState("");
+  const [editMode, setEditMode] = useState(false);
 
   // cargar todas las materias
   useEffect(() => {
@@ -16,6 +21,44 @@ const ListarMaterias = () => {
     };
     obtenerMaterias();
   }, []);
+
+  // inicializar campos de edición al seleccionar materia
+  useEffect(() => {
+    if (materiaSeleccionada) {
+      setEditNombre(materiaSeleccionada.nombre);
+      setEditAnio(materiaSeleccionada.anio);
+      setEditProfesor(materiaSeleccionada.profesor);
+      setEditMode(false); // por defecto no estamos editando
+    }
+  }, [materiaSeleccionada]);
+
+  const handleActualizarMateria = async (e) => {
+    e.preventDefault();
+    if (!materiaSeleccionada) return;
+
+    try {
+      const materiaRef = doc(db, "materias", materiaSeleccionada.id);
+      await updateDoc(materiaRef, {
+        nombre: editNombre,
+        anio: editAnio,
+        profesor: editProfesor,
+      });
+
+      // Actualizar estado local
+      setMaterias((prev) =>
+        prev.map((m) =>
+          m.id === materiaSeleccionada.id
+            ? { ...m, nombre: editNombre, anio: editAnio, profesor: editProfesor }
+            : m
+        )
+      );
+
+      alert("Materia actualizada correctamente ✅");
+      setEditMode(false);
+    } catch (error) {
+      console.error("Error al actualizar materia:", error);
+    }
+  };
 
   return (
     <div style={{ padding: "20px" }}>
@@ -40,10 +83,52 @@ const ListarMaterias = () => {
       </ul>
 
       {materiaSeleccionada && (
-        <DiaLibro materia={materiaSeleccionada} />
+        <div style={{ marginTop: "20px" }}>
+          <h3>✏️ Editar Materia</h3>
+          <button onClick={() => setEditMode(!editMode)} style={{ marginBottom: "10px" }}>
+            {editMode ? "Cancelar edición" : "Modificar datos"}
+          </button>
+
+          {editMode && (
+            <form onSubmit={handleActualizarMateria} style={{ marginBottom: "20px" }}>
+              <div style={{ marginBottom: "5px" }}>
+                <input
+                  type="text"
+                  value={editNombre}
+                  onChange={(e) => setEditNombre(e.target.value)}
+                  placeholder="Nombre de la materia"
+                  required
+                />
+              </div>
+              <div style={{ marginBottom: "5px" }}>
+                <input
+                  type="number"
+                  value={editAnio}
+                  onChange={(e) => setEditAnio(e.target.value)}
+                  placeholder="Año"
+                  required
+                />
+              </div>
+              <div style={{ marginBottom: "5px" }}>
+                <input
+                  type="text"
+                  value={editProfesor}
+                  onChange={(e) => setEditProfesor(e.target.value)}
+                  placeholder="Profesor"
+                  required
+                />
+              </div>
+              <button type="submit">Guardar cambios</button>
+            </form>
+          )}
+
+          {/* Mostrar componente DiaLibro */}
+          <DiaLibro materia={materiaSeleccionada} />
+        </div>
       )}
     </div>
   );
 };
 
 export default ListarMaterias;
+

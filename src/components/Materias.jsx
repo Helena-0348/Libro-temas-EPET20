@@ -4,7 +4,7 @@ import { db } from "../firebase/firebase";
 
 const Materias = () => {
   const [nombre, setNombre] = useState("");
-  const [anio, setAnio] = useState("");
+  const [anio, setAnio] = useState("2025"); // valor por defecto
   const [profesor, setProfesor] = useState("");
   const [mensaje, setMensaje] = useState("");
 
@@ -19,7 +19,7 @@ const Materias = () => {
       });
       setMensaje("✅ Materia agregada con éxito");
       setNombre("");
-      setAnio("");
+      setAnio("2025"); // reiniciamos al valor por defecto
       setProfesor("");
     } catch (error) {
       console.error("Error al agregar materia:", error);
