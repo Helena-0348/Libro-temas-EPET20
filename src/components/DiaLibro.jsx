@@ -3,7 +3,6 @@ import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase/firebase.jsx";
 
 const DiaLibro = ({ materia }) => {
-  // ✅ Hooks siempre al inicio
   const [nClase, setnClase] = useState("");
   const [unidad, setUnidad] = useState("");
   const [tema, setTema] = useState("");
@@ -12,9 +11,9 @@ const DiaLibro = ({ materia }) => {
   const [confirmacion, setConfirmacion] = useState(false);
   const [dias, setDias] = useState([]);
 
-  // ✅ useEffect se ejecuta siempre, pero sólo actúa si materia existe
+  // Cargar los días de esa materia
   useEffect(() => {
-    if (!materia || !materia.id) return; // ← no ejecuta nada hasta que haya materia
+    if (!materia || !materia.id) return;
 
     const diasRef = collection(db, "materias", materia.id, "dias");
 
@@ -57,7 +56,6 @@ const DiaLibro = ({ materia }) => {
     }
   };
 
-  // ✅ Mostrar mensaje solo después de los hooks
   if (!materia || !materia.id) {
     return <p style={{ color: "red" }}>⚠️ No se seleccionó ninguna materia.</p>;
   }

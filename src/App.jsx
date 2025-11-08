@@ -16,7 +16,6 @@ import './css/App.css'; // añade si no está
 import GoogleLogin from "./components/GoogleLogin.jsx";
 import DiaLibro from "./components/DiaLibro.jsx";
 import ShowDias from "./components/ShowDias.jsx";
-import MesLibro from "./components/MesLibro.jsx";
 import ListaMaterias from "./components/ListaMaterias.jsx";
 //import FormularioNombreApellido.from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
@@ -60,8 +59,6 @@ function App() {
           <Route path="/libro" element={<PaginaLibro />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/dia" element={<DiaLibro />} />
-          <Route path="/muestraD" element={<ShowDias />} />
-          <Route path="/mes" element={<MesLibro />} />
 
           <Route path="/materia" element={<PaginaMateria />} />
           <Route path="/lista" element={<ListaMaterias />} />

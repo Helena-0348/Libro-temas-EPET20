@@ -1,18 +1,3 @@
-// import React from 'react';
-// import "../css/Boton.css";
-
-// const Materias = ({ curso, materia }) => {
-//   return (
-//     <button className='materias'>
-//       {curso}
-//       <a> </a>
-//       {materia}
-//     </button>
-//   );
-// };
-
-// export default Materias;
-// src/components/Materias.jsx
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";

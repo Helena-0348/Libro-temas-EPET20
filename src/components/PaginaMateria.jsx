@@ -3,14 +3,15 @@ import Materias from "./Materias";
 import DiasMateria from "./DiasMateria";
 
 const PaginaMateria = () => {
-  const [materiaSeleccionada, setMateriaSeleccionada] = useState("ID_DE_MATERIA");
+  const [materiaSeleccionada, setMateriaSeleccionada] = useState(null);
 
   return (
     <div>
-      <Materias />
+      <Materias onMateriaSeleccionada={setMateriaSeleccionada} />
       <hr />
-      {/* Si ya tenés el ID de la materia (por ejemplo tras crearla), podés mostrar los días */}
-      {materiaSeleccionada && <DiasMateria materiaId={materiaSeleccionada} />}
+      {materiaSeleccionada && (
+        <DiasMateria materiaId={materiaSeleccionada} />
+      )}
     </div>
   );
 };
