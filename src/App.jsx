@@ -14,7 +14,6 @@ import GoogleLogin from "./components/GoogleLogin.jsx";
 import DiaLibro from "./components/DiaLibro.jsx";
 import Cursos from "./components/Cursos.jsx";
 import ListaCursos from "./components/ListaCursos.jsx";
-import ListarMateriasCurso from "./components/ListarMateriasCurso.jsx";
 //import FormularioNombreApellido.from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
 function App() {
@@ -58,10 +57,9 @@ function App() {
           <Route path="/registro" element={<Registro />} />
           <Route path="/dia" element={<DiaLibro />} />
 
-          <Route path="/lista" element={<ListarMateriasCurso />} />
 
           <Route path="/cursos" element={<Cursos />} />
-          <Route path="/listaC" element={<ListaCursos />} />        
+          <Route path="/lista" element={<ListaCursos />} />        
           {/* Ruta comodín: si no existe, muestra Inicio */}
           <Route path="*" element={<Inicio />} />
         </Routes>

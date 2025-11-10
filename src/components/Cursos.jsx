@@ -3,29 +3,25 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
 const Cursos = () => {
-  const [anioC, setAnioC] = useState(1);
-  const [division, setDivision] = useState(1);
+  const [anioC, setAnioC] = useState("");
+  const [division, setDivision] = useState("");
   const [turno, setTurno] = useState("Mañana");
   const [preceptor, setPreceptor] = useState("");
-  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Crear curso principal
       await addDoc(collection(db, "cursos"), {
         anioC: parseInt(anioC),
         division: parseInt(division),
         turno,
         preceptor,
-        creado: new Date(),
       });
-
-      // limpiar formulario
-      setAnioC(1);
-      setDivision(1);
-      setTurno("Mañana");
+      alert("Curso agregado correctamente ✅");
+      setAnioC("");
+      setDivision("");
       setPreceptor("");
+      setTurno("Mañana");
     } catch (error) {
       console.error("Error al agregar curso:", error);
     }
@@ -33,73 +29,59 @@ const Cursos = () => {
 
   return (
     <div>
-{/* 🔸 Botón para mostrar/ocultar el formulario */}
-      <button
-        onClick={() => setMostrarFormulario(!mostrarFormulario)}
-        style={{
-          margin: "10px 0",
-          padding: "8px 12px",
-          cursor: "pointer",
-          background: "#4CAF50",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-        }}
-      >
-        {mostrarFormulario ? "Cancelar" : "➕ Registrar nuevo curso"}
-      </button>
+        <div className="contenedor-edicion">
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>Año: </label>
+              <input
+                type="number"
+                min="1"
+                max="6"
+                value={anioC}
+                onChange={(e) => setAnioC(e.target.value)}
+                required
+              />
+            </div>
 
-      {/* 🔸 Formulario condicional */}
-      {mostrarFormulario && (
-        <form onSubmit={handleSubmit} style={{ marginTop: "10px" }}>        <div style={{ marginBottom: "10px" }}>
-          <label>Año del curso: </label>
-          <input
-            type="number"
-            min="1"
-            max="6"
-            value={anioC}
-            onChange={(e) => setAnioC(e.target.value)}
-            required
-          />
+            <div>
+              <label>División: </label>
+              <input
+                type="number"
+                min="1"
+                max="6"
+                value={division}
+                onChange={(e) => setDivision(e.target.value)}
+                required
+              />
+            </div>
+
+            <div>
+              <label>Turno: </label>
+              <select
+                value={turno}
+                onChange={(e) => setTurno(e.target.value)}
+              >
+                <option value="Mañana">Mañana</option>
+                <option value="Tarde">Tarde</option>
+                <option value="Vespertino">Vespertino</option>
+              </select>
+            </div>
+
+            <div>
+              <label>Preceptor: </label>
+              <input
+                type="text"
+                value={preceptor}
+                onChange={(e) => setPreceptor(e.target.value)}
+                required
+              />
+            </div>
+
+            <button type="submit" className="boton-guardar">
+              Guardar curso
+            </button>
+          </form>
         </div>
-
-        <div style={{ marginBottom: "10px" }}>
-          <label>División: </label>
-          <input
-            type="number"
-            min="1"
-            max="6"
-            value={division}
-            onChange={(e) => setDivision(e.target.value)}
-            required
-          />
-        </div>
-
-        <div style={{ marginBottom: "10px" }}>
-          <label>Turno: </label>
-          <select value={turno} onChange={(e) => setTurno(e.target.value)}>
-            <option value="Mañana">Mañana</option>
-            <option value="Tarde">Tarde</option>
-            <option value="Vespertino">Vespertino</option>
-          </select>
-        </div>
-
-        <div style={{ marginBottom: "10px" }}>
-          <label>Preceptor: </label>
-          <input
-            type="text"
-            placeholder="Nombre del preceptor"
-            value={preceptor}
-            onChange={(e) => setPreceptor(e.target.value)}
-            required
-          />
-        </div>
-
-        <button type="submit" style={{ marginTop: "10px" }}>
-          Guardar curso
-        </button>
-      </form>
-      )}
     </div>
   );
 };
