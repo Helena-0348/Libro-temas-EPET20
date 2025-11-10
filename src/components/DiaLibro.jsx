@@ -11,6 +11,7 @@ const DiaLibro = ({ materia }) => {
   const [confirmacion, setConfirmacion] = useState(false);
   const [fecha, setFecha] = useState(""); 
   const [dias, setDias] = useState([]);
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   // Cargar los días de esa materia
   useEffect(() => {
@@ -82,9 +83,25 @@ const DiaLibro = ({ materia }) => {
 
   return (
     <div style={{ marginTop: "20px" }}>
+      {/* 🔸 Botón para mostrar/ocultar el formulario */}
+      <button
+        onClick={() => setMostrarFormulario(!mostrarFormulario)}
+        style={{
+          margin: "10px 0",
+          padding: "8px 12px",
+          cursor: "pointer",
+          background: "#4CAF50",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+        }}
+      >
+        {mostrarFormulario ? "Cancelar" : "➕ Agregar Día"}
+      </button>
+{mostrarFormulario && (
+        <form onSubmit={handleSubmit} style={{ marginTop: "10px" }}>
       <h2>📘 Cargar día para {materia.nombre}</h2>
 
-      <form onSubmit={handleSubmit}>
         <input
           type="number"
           value={nClase}
@@ -167,6 +184,7 @@ const DiaLibro = ({ materia }) => {
         <br />
         <button type="submit">Guardar día</button>
       </form>
+      )}
 
       <h3 style={{ marginTop: "30px" }}>📅 Días registrados</h3>
       {dias.length > 0 ? (

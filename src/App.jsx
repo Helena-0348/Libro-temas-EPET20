@@ -18,6 +18,7 @@ import DiaLibro from "./components/DiaLibro.jsx";
 import ListaMaterias from "./components/ListaMaterias.jsx";
 import Cursos from "./components/Cursos.jsx";
 import ListaCursos from "./components/ListaCursos.jsx";
+import ListarMateriasCurso from "./components/ListarMateriasCurso.jsx";
 //import FormularioNombreApellido.from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
 function App() {
@@ -62,7 +63,7 @@ function App() {
           <Route path="/dia" element={<DiaLibro />} />
 
           <Route path="/materia" element={<PaginaMateria />} />
-          <Route path="/lista" element={<ListaMaterias />} />
+          <Route path="/lista" element={<ListarMateriasCurso />} />
 
           <Route path="/cursos" element={<Cursos />} />
           <Route path="/listaC" element={<ListaCursos />} />        

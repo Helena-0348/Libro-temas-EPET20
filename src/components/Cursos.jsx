@@ -7,6 +7,7 @@ const Cursos = () => {
   const [division, setDivision] = useState(1);
   const [turno, setTurno] = useState("Mañana");
   const [preceptor, setPreceptor] = useState("");
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,9 +33,25 @@ const Cursos = () => {
 
   return (
     <div>
-      <h2>Registrar nuevo curso</h2>
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "10px" }}>
+{/* 🔸 Botón para mostrar/ocultar el formulario */}
+      <button
+        onClick={() => setMostrarFormulario(!mostrarFormulario)}
+        style={{
+          margin: "10px 0",
+          padding: "8px 12px",
+          cursor: "pointer",
+          background: "#4CAF50",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+        }}
+      >
+        {mostrarFormulario ? "Cancelar" : "➕ Registrar nuevo curso"}
+      </button>
+
+      {/* 🔸 Formulario condicional */}
+      {mostrarFormulario && (
+        <form onSubmit={handleSubmit} style={{ marginTop: "10px" }}>        <div style={{ marginBottom: "10px" }}>
           <label>Año del curso: </label>
           <input
             type="number"
@@ -82,6 +99,7 @@ const Cursos = () => {
           Guardar curso
         </button>
       </form>
+      )}
     </div>
   );
 };

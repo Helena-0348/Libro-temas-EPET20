@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
-import Materias from "./MateriasCurso"; // componente que maneja materias por curso
+import MateriaCurso from "./MateriasCurso"; // componente que maneja materias por curso
+import Cursos from "./Cursos";
 
 const ListaCursos = () => {
   const [cursos, setCursos] = useState([]);
@@ -138,8 +139,10 @@ const ListaCursos = () => {
           )}
 
           {/* Mostrar componente de Materias para este curso */}
-          <Materias curso={cursoSeleccionado} />
-        </div>
+          <MateriaCurso curso={cursoSeleccionado} />
+          <Cursos/> 
+            </div>
+   
       )}
     </div>
   );
