@@ -14,7 +14,7 @@ const ListaCursos = () => {
   const [editPreceptor, setEditPreceptor] = useState("");
   const [editMode, setEditMode] = useState(false);
 
-  // cargar todos los cursos
+  // 🔹 Cargar todos los cursos al montar el componente
   useEffect(() => {
     const obtenerCursos = async () => {
       const snapshot = await getDocs(collection(db, "cursos"));
@@ -24,17 +24,18 @@ const ListaCursos = () => {
     obtenerCursos();
   }, []);
 
-  // inicializar campos de edición al seleccionar curso
+  // 🔹 Inicializar campos de edición cuando se selecciona un curso
   useEffect(() => {
     if (cursoSeleccionado) {
       setEditAnioC(cursoSeleccionado.anioC);
       setEditDivision(cursoSeleccionado.division);
       setEditTurno(cursoSeleccionado.turno);
       setEditPreceptor(cursoSeleccionado.preceptor);
-      setEditMode(false); // por defecto no estamos editando
+      setEditMode(false);
     }
   }, [cursoSeleccionado]);
 
+  // 🔹 Actualizar datos del curso
   const handleActualizarCurso = async (e) => {
     e.preventDefault();
     if (!cursoSeleccionado) return;
@@ -48,7 +49,7 @@ const ListaCursos = () => {
         preceptor: editPreceptor,
       });
 
-      // Actualizar estado local
+      // Actualizar localmente
       setCursos((prev) =>
         prev.map((c) =>
           c.id === cursoSeleccionado.id
@@ -64,32 +65,54 @@ const ListaCursos = () => {
     }
   };
 
+  // 🔹 Manejar selección del curso desde el select
+  const handleSeleccionCurso = (e) => {
+    const idSeleccionado = e.target.value;
+    const curso = cursos.find((c) => c.id === idSeleccionado);
+    setCursoSeleccionado(curso || null);
+  };
+
   return (
     <div style={{ padding: "20px" }}>
       <h2>📚 Lista de Cursos</h2>
-      <ul>
-        {cursos.map((c) => (
-          <li key={c.id}>
-            <button
-              style={{
-                border: "1px solid black",
-                background: cursoSeleccionado?.id === c.id ? "#d0f0d0" : "white",
-                cursor: "pointer",
-                padding: "5px 10px",
-                marginBottom: "5px",
-              }}
-              onClick={() => setCursoSeleccionado(c)}
-            >
-              {c.anioC}° año — Div {c.division} — {c.turno} — Preceptor: {c.preceptor}
-            </button>
-          </li>
-        ))}
-      </ul>
 
+      {/* 🔸 Menú desplegable con los cursos */}
+      <select
+        onChange={handleSeleccionCurso}
+        value={cursoSeleccionado?.id || ""}
+        style={{
+          padding: "8px",
+          borderRadius: "5px",
+          border: "1px solid #ccc",
+          marginBottom: "20px",
+          width: "100%",
+          maxWidth: "400px",
+        }}
+      >
+        <option value="">Seleccionar un curso...</option>
+        {cursos.map((c) => (
+          <option key={c.id} value={c.id}>
+            {c.anioC}° año — División {c.division} — {c.turno} — Preceptor: {c.preceptor}
+          </option>
+        ))}
+      </select>
+
+      {/* 🔹 Mostrar detalles solo si hay curso seleccionado */}
       {cursoSeleccionado && (
         <div style={{ marginTop: "20px" }}>
           <h3>✏️ Editar Curso</h3>
-          <button onClick={() => setEditMode(!editMode)} style={{ marginBottom: "10px" }}>
+          <button
+            onClick={() => setEditMode(!editMode)}
+            style={{
+              marginBottom: "10px",
+              padding: "6px 12px",
+              backgroundColor: "#007bff",
+              color: "white",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+          >
             {editMode ? "Cancelar edición" : "Modificar datos"}
           </button>
 
@@ -138,16 +161,15 @@ const ListaCursos = () => {
             </form>
           )}
 
-          {/* Mostrar componente de Materias para este curso */}
+          {/* 🔹 Mostrar materias del curso seleccionado */}
           <MateriaCurso curso={cursoSeleccionado} />
-          <Cursos/> 
-            </div>
-   
+
+          {/* (Opcional) componente adicional */}
+          <Cursos />
+        </div>
       )}
     </div>
   );
 };
 
 export default ListaCursos;
-
-

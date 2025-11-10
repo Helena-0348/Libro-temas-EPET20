@@ -1,6 +1,5 @@
 //componente para la pagina del formulario
 import Encabezado from "../components/Encabezado.jsx";
-import Materias from '../components/Materias.jsx';
 import Semana from '../components/Semana.jsx';
 import Tabla from '../components/Tabla.jsx';
 import Boton from '../components/Boton.jsx';
