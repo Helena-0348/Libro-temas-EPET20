@@ -1,6 +1,8 @@
 // ...existing code...
 import React from 'react';
 import '../css/UserRole.css';
+import LetrasEpet from "./LetrasEpet";
+
 
 const UserRole = ({ user }) => {
   if (!user) {
@@ -13,8 +15,9 @@ const UserRole = ({ user }) => {
   }
 
   return (
+    <div>           <LetrasEpet/>
     <main className="user-role">
-      <h2 className="user-role__title">Mi cuenta</h2>
+      <div className="user-role__title-pill">Mi cuenta</div>
       <div className="user-role__box">
         <p><strong>Nombre:</strong> {user.displayName || '—'}</p>
         <p><strong>Email:</strong> {user.email || '—'}</p>
@@ -23,6 +26,7 @@ const UserRole = ({ user }) => {
         {user.photoURL && <img src={user.photoURL} alt="avatar" style={{ width: 80, height: 80, borderRadius: 8, marginTop: 12 }} />}
       </div>
     </main>
+    </div>
   );
 };
 

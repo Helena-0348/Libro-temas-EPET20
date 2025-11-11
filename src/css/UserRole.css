@@ -4,22 +4,29 @@ main.user-role {
     margin: 0 auto;
     font-family: 'Segoe UI', Arial, sans-serif;
     color: #2b3a55;
-    background-color: #f7f9fc;
+    background-color: #fff;
     min-height: 100vh;
 }
 
-.user-role__title {
-    font-size: 28px;
+.user-role__title-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00bcd4;
+    color: #ffffff;
+    font-family: 'Segoe UI', Arial, sans-serif;
     font-weight: 600;
-    margin-bottom: 16px;
-    color: #1b4b72;
-    text-align: left;
+    font-size: 20px;
+    padding: 10px 24px;
+    border-radius: 9999px;
+    margin: 20px auto;
 }
 
 .user-role__box {
-    background: #fff;
+    background: #ebf7f8;
     padding: 20px 24px;
-    border-radius: 10px;
+    border: 1px solid #456ea7;
+    border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
