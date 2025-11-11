@@ -6,13 +6,9 @@ import { useUser } from '../context/useUser'; // Asegura que esta ruta sea corre
 import '../css/GoogleLogin.css';
 import logo from "../img/logo_epet20.jpg"
 import googleLogo from "../img/foto_google.jpg"
-<<<<<<< HEAD
-import ContactoInfo from './ContactoInfo';
-
-=======
 import LetrasEpet from "./LetrasEpet";
 import ContactoInfo from "./ContactoInfo"
->>>>>>> f718e30b2dc4ca2b17b2945e638bdc4a29e86db2
+
 const GoogleLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -37,11 +33,9 @@ const GoogleLogin = () => {
         });
       }
 
-<<<<<<< HEAD
-      navigate('/inicio'); // ✅ Ajusta la ruta según tus rutas reales
-=======
-      navigate('/registro'); //Ajusta la ruta según las rutas reales
->>>>>>> f718e30b2dc4ca2b17b2945e638bdc4a29e86db2
+
+      navigate('/appRouter'); // ✅ Ajusta la ruta según tus rutas reales
+
     } catch (err) {
       console.error('Error en login con Google:', err);
       setError('Error al iniciar sesión con Google. Intenta nuevamente.');
@@ -51,16 +45,13 @@ const GoogleLogin = () => {
   };
 
   return (
-<<<<<<< HEAD
-<div>
-<main className="google__hero" aria-label="Iniciar sesión con Google">
-=======
+
 
     <div>
       <LetrasEpet/>
     <main className="google__hero" aria-label="Iniciar sesión con Google">
       
->>>>>>> f718e30b2dc4ca2b17b2945e638bdc4a29e86db2
+
       <div className="google__card">
         
         <div className="google__left" aria-hidden="true">
@@ -98,18 +89,12 @@ const GoogleLogin = () => {
         </div>
 
       </div>
-<<<<<<< HEAD
 
-    </main><ContactoInfo/>
-</div>
-
-);
-=======
     </main>
     <ContactoInfo/>
     </div>
   );
->>>>>>> f718e30b2dc4ca2b17b2945e638bdc4a29e86db2
+
 };
 
 export default GoogleLogin;
