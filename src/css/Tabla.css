@@ -1,33 +1,67 @@
 .tabla {
     display: grid;
-    height: 220px;
     width: 810px;
-    margin: 20px;
+    margin: 24px auto;
+    border-radius: 12px;
+    /* 🔹 Bordes redondeados */
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* 🔹 Sombra sutil tipo tarjeta */
+    border: 1px solid #d3dbe8;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
 }
 
 .fila {
-    background-color: rgba(194, 194, 194, 0);
     display: grid;
-    height: auto;
-    width: 810px;
     grid-template-columns: 100px 100px 100px 100px 130px 50px 50px 180px;
+    width: 100%;
 }
 
 .celda {
-    height: 20px;
-    width: auto;
-    border: 1px solid #456ea7;
-    margin: 0px;
-    padding: 1px;
+    border: 1px solid #c3d2ea;
+    padding: 8px 6px;
+    text-align: center;
+    /* 🔹 Centrado horizontal */
+    font-size: 14px;
+    color: #2c3e50;
+    background-color: #f9fbfd;
 }
 
 .celdaP {
     background-color: #6a92c8;
-    color: rgb(226, 233, 240);
-    height: auto;
-    width: auto;
+    /* 🔹 Azul institucional */
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    /* 🔹 Centrado en el encabezado */
+    padding: 10px;
     border: 1px solid #456ea7;
-    margin: 0px;
-    padding: 3px;
-    height: 30px;
+    font-size: 15px;
+}
+
+
+/* 🔹 Efecto hover tipo Classroom */
+
+.fila:hover .celda {
+    background-color: #eef3fb;
+}
+
+
+/* 🔹 Bordes limpios */
+
+.fila:first-child .celdaP:first-child {
+    border-top-left-radius: 12px;
+}
+
+.fila:first-child .celdaP:last-child {
+    border-top-right-radius: 12px;
+}
+
+.fila:last-child .celda:last-child {
+    border-bottom-right-radius: 12px;
+}
+
+.fila:last-child .celda:first-child {
+    border-bottom-left-radius: 12px;
 }

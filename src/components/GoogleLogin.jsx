@@ -52,8 +52,9 @@ const GoogleLogin = () => {
     <main className="google__hero" aria-label="Iniciar sesión con Google">
       
 
+
       <div className="google__card">
-        
+        <h1 className="google__mainTitle">Libro de Temas</h1>
         <div className="google__left" aria-hidden="true">
           <img
             src={logo}
@@ -63,7 +64,7 @@ const GoogleLogin = () => {
         </div>
 
         <div className="google__right">
-          <h2 className="google__title">Iniciar sesión- Libro temas</h2>
+          <h2 className="google__title">Iniciar sesión</h2>
 
           {error && (
             <div className="google__error" role="alert">
