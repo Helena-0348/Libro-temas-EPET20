@@ -4,17 +4,17 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebase';
 
-import Inicio from './Inicio.jsx';
 import Home from './Home.jsx';
+import Inicio from './Inicio.jsx';
 import GoogleLogin from './GoogleLogin.jsx';
 import Registro from './Registro.jsx';
 import UserRole from './UserRole.jsx';
+import PrivateRoute from './PrivateRoute';
 
 import Formulario from './Formulario.jsx';
 import PaginaLibro from './PaginaLibro.jsx';
 import DiaLibro from './DiaLibro.jsx';
 import ShowDias from './ShowDias.jsx';
-
 import AltaDato from './AltaDato.jsx';
 import ListadoDatos from './listadoDatos.jsx';
 
@@ -39,7 +39,6 @@ const AppRouter = () => {
         const snap = await getDoc(userRef);
 
         if (!snap.exists()) {
-          // primer login: crear usuario con rol por defecto
           const newUser = {
             uid,
             email: firebaseUser.email || null,
@@ -69,27 +68,38 @@ const AppRouter = () => {
     return () => unsub();
   }, []);
 
-  if (loading) return <div style={{ padding: 20 }}>Cargando...</div>;
+  if (loading) return <div style={{ padding:10 }}>Cargando...</div>;
 
   const rol = userState?.rol;
 
   return (
     <Routes>
-      {/* Rutas públicas */}
-      <Route path="/" element={<Inicio />} />
-      <Route path="/inicio" element={<Inicio />} />
+      {/* públicas */}
+      <Route path="/" element={<Home />} />
       <Route path="/Googlelogin" element={<GoogleLogin />} />
       <Route path="/registro" element={<Registro />} />
 
-      {/* Ver rol: protegido (si no está autenticado redirige al login) */}
+      {/* ruta protegida: Inicio (acceso solo si autenticado) */}
       <Route
-        path="/mi-rol"
+        path="/inicio"
         element={
-          userState ? <UserRole user={userState} /> : <Navigate to="/Googlelogin" replace />
+          <PrivateRoute user={userState}>
+            <Inicio />
+          </PrivateRoute>
         }
       />
 
-      {/* Rutas disponibles para profesores / preceptores / admin */}
+      {/* vista de la cuenta */}
+      <Route
+        path="/mi-rol"
+        element={
+          <PrivateRoute user={userState}>
+            <UserRole user={userState} />
+          </PrivateRoute>
+        }
+      />
+
+      {/* rutas privadas para roles */}
       {(rol === 'profesor' || rol === 'preceptor' || rol === 'admin') && (
         <>
           <Route path="/Formulario" element={<Formulario />} />
@@ -97,8 +107,6 @@ const AppRouter = () => {
           <Route path="/libro" element={<PaginaLibro />} />
           <Route path="/dia" element={<DiaLibro />} />
           <Route path="/muestraD" element={<ShowDias />} />
-
-          {/* Rutas de gestión de datos */}
           <Route path="/agregar" element={<AltaDato />} />
           <Route path="/listado" element={<ListadoDatos />} />
           <Route
@@ -114,15 +122,10 @@ const AppRouter = () => {
         </>
       )}
 
-      {/* Rutas adicionales solo para admin */}
-      {rol === 'admin' && (
-        <>
-          <Route path="/admin" element={<Home />} />
-          {/* aquí podés agregar rutas exclusivas de administración */}
-        </>
-      )}
+      {/* admin extra */}
+      {rol === 'admin' && <Route path="/admin" element={<Home />} />}
 
-      {/* Ruta comodín: si no coincide con nada, ir a Inicio */}
+      {/* fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
