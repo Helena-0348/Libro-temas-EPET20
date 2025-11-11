@@ -6,7 +6,6 @@ import { useUser } from '../context/useUser'; // Asegura que esta ruta sea corre
 import '../css/GoogleLogin.css';
 import logo from "../img/logo_epet20.jpg"
 import googleLogo from "../img/foto_google.jpg"
-
 import LetrasEpet from "./LetrasEpet";
 import ContactoInfo from "./ContactoInfo"
 
@@ -34,7 +33,8 @@ const GoogleLogin = () => {
         });
       }
 
-      navigate('/registro'); //Ajusta la ruta según las rutas reales
+
+      navigate('/appRouter'); // ✅ Ajusta la ruta según tus rutas reales
 
     } catch (err) {
       console.error('Error en login con Google:', err);
@@ -46,11 +46,12 @@ const GoogleLogin = () => {
 
   return (
 
+
     <div>
-      <LetrasEpet/>
+          <LetrasEpet/>
     <main className="google__hero" aria-label="Iniciar sesión con Google">
       
- 
+
 
       <div className="google__card">
         <h1 className="google__mainTitle">Libro de Temas</h1>
@@ -91,7 +92,9 @@ const GoogleLogin = () => {
       </div>
 
     </main>
-    <ContactoInfo/>
+
+
+          <ContactoInfo/>
     </div>
   );
 

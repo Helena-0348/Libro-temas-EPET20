@@ -1,45 +1,46 @@
 // src/App.jsx
 import React from "react";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Importación componentes
+<<<<<<< HEAD
+
+=======
 import AppRouter from './components/AppRouter';
+>>>>>>> cd578c456b5ee05e0e8ea00e3ce5fd647938c8cb
 import Home from "./components/Home";
-import Formulario from "./components/Formulario.jsx";
-import PaginaLibro from "./components/PaginaLibro";
-
-import Registro from "./components/Registro";
-import PaginaInicio from "./components/PaginaInicio";
-import Inicio from "./components/Inicio.jsx";
-
-import AltaDato from "./components/AltaDato.jsx";
-//import {gapi} from './gapi-script'
-//import {useEffect} from 'react';
-import ListadoDatos from "./components/listadoDatos.jsx";
 
 import './css/App.css'; 
 
 import GoogleLogin from "./components/GoogleLogin.jsx";
 
+<<<<<<< HEAD
+import AppRouter from "./components/AppRouter.jsx";
+
+=======
 import DiaLibro from "./components/DiaLibro.jsx";
 import ShowDias from "./components/ShowDias.jsx";
 //import MesLibro from "./components/MesLibro.jsx";
 //import FormularioNombreApellido.from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
+>>>>>>> cd578c456b5ee05e0e8ea00e3ce5fd647938c8cb
 function App() {
   return (
     
      
-      <div >
-       
+ <div>
+      <Routes>
+              {/* Ruta de inicio */}
+              <Route path="/" element={<Home/>} />
 
-        <Routes>
-   
-        
-        
-          {/* Ruta de inicio */}
-          <Route path="/" element={<Home/>} />
+              <Route path="/Googlelogin" element={<GoogleLogin/>} />
 
+<<<<<<< HEAD
+              <Route path="/appRouter" element={<AppRouter/>} />
+      </Routes>
+ </div>
+=======
           <Route path="/AppRouter" element={<AppRouter/>} />
 
           {/* Otra página de inicio */}
@@ -76,6 +77,7 @@ function App() {
 
         </Routes>
       </div>
+>>>>>>> cd578c456b5ee05e0e8ea00e3ce5fd647938c8cb
      
   );
 }
@@ -86,50 +88,3 @@ export default App;
 
 
 
-// import React from 'react'
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-        
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-        
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
