@@ -1,0 +1,60 @@
+main.user-role {
+    padding: 24px;
+    max-width: 840px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #2b3a55;
+    background-color: #f7f9fc;
+    min-height: 100vh;
+}
+
+.user-role__title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #1b4b72;
+    text-align: left;
+}
+
+.user-role__box {
+    background: #fff;
+    padding: 20px 24px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.user-role__box p {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.user-role__box strong {
+    color: #345b8a;
+}
+
+.user-role__role {
+    text-transform: capitalize;
+    color: #4c6fa6;
+}
+
+.user-role__avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    margin-top: 12px;
+    object-fit: cover;
+}
+
+.user-role__unauth {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.user-role__unauth h2 {
+    color: #1b4b72;
+}
+
+.user-role__unauth p {
+    color: #5a6d8c;
+    font-size: 16px;
+}
