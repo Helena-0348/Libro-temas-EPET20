@@ -1,20 +1,16 @@
-// src/components/AltaDato.jsx
 import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase.jsx';
 
-const MesLibro = () => {
-  // Estados para cada campo del formulario
+const AnioLibro = () => {
   const [numMes, setNumMes] = useState('');
   const [cantD, setCantD] = useState('');
   const [dia, setDia] = useState('');
 
-  // Función que se ejecuta al enviar el formulario
   const handleSubmit = async (e) => {
     e.preventDefault(); // Evita recargar la página
 
     try {
-      // Guardamos los datos en la colección "profesores"
       const docRef = await addDoc(collection(db, "meses"), {
         numMes:Number(numMes),
         cantD:Number(cantD),
@@ -78,4 +74,4 @@ const MesLibro = () => {
   );
 };
 
-export default MesLibro;
+export default AnioLibro;
