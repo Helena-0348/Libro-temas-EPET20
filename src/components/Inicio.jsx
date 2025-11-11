@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../css/Inicio.css';
 import ContactoInfo from './ContactoInfo';
 import GoButton from './GoButton';
-
+import AppRouter from './AppRouter';
 /**
  * Componente Inicio
  * Página de bienvenida con información sobre la EPET N°20
