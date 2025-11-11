@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../css/Inicio.css';
 import ContactoInfo from './ContactoInfo';
 import GoButton from './GoButton';
@@ -10,6 +10,12 @@ import AppRouter from './AppRouter';
  * y accesos rápidos a las principales secciones
  */
 function Inicio() {
+  const navigate = useNavigate();
+
+  const handleNavigation = (ruta) => {
+    navigate(ruta);
+  };
+
   return (
     <div className="inicio-page-wrapper">
       
@@ -22,7 +28,7 @@ function Inicio() {
             
             {/* Banderín con identificación de la escuela */}
             <div className="banderin-compacto">
-              <p>EPET N° 20</p>
+              <p>.         EPET N° 20</p>
               <p>Libro de Temas - EPET N° 20</p>
             </div>
 
@@ -54,9 +60,34 @@ function Inicio() {
           <h3>Accesos Rápidos</h3>
 
           <nav className="enlaces-rapidos">
-            <Link to="/" className="link-rapido">Inicio</Link>
-            <Link to="/appRouter/libro" className="link-rapido">Libro de temas</Link>
-            <Link to="/appRouter/mi-rol" className="link-rapido">Mi cuenta</Link>
+
+            <button 
+              className="link-rapido" 
+              onClick={() => handleNavigation('/')}
+              type="button"
+              aria-label="Ir a inicio"
+            >
+              Inicio
+            </button>
+            
+            <button 
+              className="link-rapido" 
+              onClick={() => handleNavigation('/PaginaLibro')}
+              type="button"
+              aria-label="Ir a libro de temas"
+            >
+              Libro de temas
+            </button>
+            
+            <button 
+              className="link-rapido" 
+              onClick={() => handleNavigation('/mi-rol')}
+              type="button"
+              aria-label="Ir a mi cuenta"
+            >
+              Mi cuenta
+            </button>
+
           </nav>
         </div>
       </div>

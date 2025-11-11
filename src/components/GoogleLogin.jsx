@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from '../firebase/firebase'; //Ajusta la ruta según tu estructura real
-import { useUser } from '../context/useUser'; // Asegura que esta ruta sea correcta
+import { auth, provider } from '../firebase/firebase';
+import { useUser } from '../context/useUser';
 import '../css/GoogleLogin.css';
-import logo from "../img/logo_epet20.jpg"
-import googleLogo from "../img/foto_google.jpg"
+import logo from "../img/logo_epet20.jpg";
+import googleLogo from "../img/foto_google.jpg";
 import LetrasEpet from "./LetrasEpet";
-import ContactoInfo from "./ContactoInfo"
+import ContactoInfo from "./ContactoInfo";
 
 const GoogleLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const { login } = useUser(); // asegúrate de que exporte `login`
+  const { login } = useUser();
   const navigate = useNavigate();
 
   const handleGoogle = async () => {
     setError('');
     setLoading(true);
-
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-    
       if (login) {
         login({
           uid: user.uid,
@@ -33,9 +31,8 @@ const GoogleLogin = () => {
         });
       }
 
-
-      navigate('/appRouter'); // ✅ Ajusta la ruta según tus rutas reales
-
+      // después del login vamos a la página protegida /inicio
+      navigate('/inicio', { replace: true });
     } catch (err) {
       console.error('Error en login con Google:', err);
       setError('Error al iniciar sesión con Google. Intenta nuevamente.');
@@ -45,59 +42,30 @@ const GoogleLogin = () => {
   };
 
   return (
-
-
     <div>
-          <LetrasEpet/>
-    <main className="google__hero" aria-label="Iniciar sesión con Google">
-      
+      <LetrasEpet />
+      <main className="google__hero" aria-label="Iniciar sesión con Google">
+        <div className="google__card">
+          <h1 className="google__mainTitle">Libro de Temas</h1>
+          <div className="google__left" aria-hidden="true">
+            <img src={logo} alt="Foto de la escuela" className="google__school" />
+          </div>
 
+          <div className="google__right">
+            <h2 className="google__title">Iniciar sesión</h2>
 
-      <div className="google__card">
-        <h1 className="google__mainTitle">Libro de Temas</h1>
-        <div className="google__left" aria-hidden="true">
-          <img
-            src={logo}
-            alt="Foto de la escuela"
-            className="google__school"
-          />
+            {error && <div className="google__error" role="alert">{error}</div>}
+
+            <button className="google__btn" onClick={handleGoogle} disabled={loading} aria-disabled={loading}>
+              <img src={googleLogo} alt="Logo de Google" className="google__logo" width="18" height="18" />
+              <span>{loading ? 'Redirigiendo...' : 'Iniciar sesión con Google'}</span>
+            </button>
+          </div>
         </div>
-
-        <div className="google__right">
-          <h2 className="google__title">Iniciar sesión</h2>
-
-          {error && (
-            <div className="google__error" role="alert">
-              {error}
-            </div>
-          )}
-
-          <button
-            className="google__btn"
-            onClick={handleGoogle}
-            disabled={loading}
-            aria-disabled={loading}
-          >
-            <img
-              src={googleLogo}
-              alt="Logo de Google"
-              className="google__logo"
-              width="18"
-              height="18"
-            />
-            <span>{loading ? 'Redirigiendo...' : 'Iniciar sesión con Google'}</span>
-          </button>
-        </div>
-
-      </div>
-
-    </main>
-
-
-          <ContactoInfo/>
+      </main>
+      <ContactoInfo />
     </div>
   );
-
 };
 
 export default GoogleLogin;
