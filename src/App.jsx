@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { UserProvider } from './context/useUser.jsx';
 import AppRouter from './components/AppRouter';
@@ -12,6 +13,7 @@ function App() {
         </div>
       </div>
     </UserProvider>
+
   );
 }
 

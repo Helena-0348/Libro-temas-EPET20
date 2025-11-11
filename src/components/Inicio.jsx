@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../css/Inicio.css';
 import ContactoInfo from './ContactoInfo';
 import GoButton from './GoButton';
-
+import AppRouter from './AppRouter';
 /**
  * Componente Inicio
  * Página de bienvenida con información sobre la EPET N°20
@@ -60,6 +60,7 @@ function Inicio() {
           <h3>Accesos Rápidos</h3>
 
           <nav className="enlaces-rapidos">
+
             <button 
               className="link-rapido" 
               onClick={() => handleNavigation('/')}
@@ -86,6 +87,7 @@ function Inicio() {
             >
               Mi cuenta
             </button>
+
           </nav>
         </div>
       </div>
