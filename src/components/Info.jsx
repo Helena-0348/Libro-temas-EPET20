@@ -37,6 +37,7 @@ const Info = () => {
 
         {/* Botones de acción */}
         <div className="info__actions" role="group" aria-label="Acciones principales">
+
           <button 
             className="btn btn--primary" 
             onClick={handleInitiarSesion}
@@ -45,6 +46,7 @@ const Info = () => {
           >
             Iniciar Sesión
           </button>
+
         </div>
 
       </div>

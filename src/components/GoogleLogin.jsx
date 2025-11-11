@@ -48,7 +48,7 @@ const GoogleLogin = () => {
 
 
     <div>
-      <LetrasEpet/>
+          <LetrasEpet/>
     <main className="google__hero" aria-label="Iniciar sesión con Google">
       
 
@@ -91,7 +91,9 @@ const GoogleLogin = () => {
       </div>
 
     </main>
-    <ContactoInfo/>
+
+
+          <ContactoInfo/>
     </div>
   );
 
