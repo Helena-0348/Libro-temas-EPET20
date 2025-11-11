@@ -23,7 +23,7 @@ function App() {
               {/* Ruta de inicio */}
               <Route path="/" element={<Home/>} />
               <Route path="/Googlelogin" element={<GoogleLogin/>} />
-              <Route path="/appRouter" element={<AppRouter/>} />
+              <Route path="/appRouter/*" element={<AppRouter/>} />
       </Routes>
  </div>
      
