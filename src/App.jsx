@@ -4,27 +4,25 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Importación componentes
-<<<<<<< HEAD
-
-=======
 import AppRouter from './components/AppRouter';
->>>>>>> cd578c456b5ee05e0e8ea00e3ce5fd647938c8cb
 import Home from "./components/Home";
 
 import './css/App.css'; 
 
 import GoogleLogin from "./components/GoogleLogin.jsx";
 
-<<<<<<< HEAD
-import AppRouter from "./components/AppRouter.jsx";
+import Inicio from "./components/Inicio.jsx";
+import AltaDato from "./components/AltaDato.jsx";
+import ListadoDatos from "./components/listadoDatos.jsx";
+import PaginaLibro from "./components/PaginaLibro.jsx";
+import Registro from "./components/Registro.jsx";
 
-=======
 import DiaLibro from "./components/DiaLibro.jsx";
 import ShowDias from "./components/ShowDias.jsx";
 //import MesLibro from "./components/MesLibro.jsx";
 //import FormularioNombreApellido.from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
->>>>>>> cd578c456b5ee05e0e8ea00e3ce5fd647938c8cb
+
 function App() {
   return (
     
@@ -36,11 +34,7 @@ function App() {
 
               <Route path="/Googlelogin" element={<GoogleLogin/>} />
 
-<<<<<<< HEAD
-              <Route path="/appRouter" element={<AppRouter/>} />
-      </Routes>
- </div>
-=======
+
           <Route path="/AppRouter" element={<AppRouter/>} />
 
           {/* Otra página de inicio */}
@@ -77,7 +71,6 @@ function App() {
 
         </Routes>
       </div>
->>>>>>> cd578c456b5ee05e0e8ea00e3ce5fd647938c8cb
      
   );
 }

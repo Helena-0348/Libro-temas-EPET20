@@ -55,7 +55,7 @@ function Inicio() {
 
           <nav className="enlaces-rapidos">
             <Link to="/" className="link-rapido">Inicio</Link>
-            <Link to="/PaginaLibro" className="link-rapido">Libro de temas</Link>
+            <Link to="/Libro" className="link-rapido">Libro de temas</Link>
             <Link to="/mi-rol" className="link-rapido">Mi cuenta</Link>
           </nav>
         </div>
