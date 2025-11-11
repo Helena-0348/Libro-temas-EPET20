@@ -90,7 +90,7 @@ const ListaCursos = () => {
             <option value="">Seleccionar curso</option>
             {cursos.map((c) => (
               <option key={c.id} value={c.id}>
-                {c.anioC}° — Div {c.division} — {c.turno}
+                {c.anioC}° — Div {c.division} — {c.turno} — {c.preceptor}
               </option>
             ))}
           </select>
