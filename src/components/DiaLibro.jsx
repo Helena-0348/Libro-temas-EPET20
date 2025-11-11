@@ -90,17 +90,17 @@ const DiaLibro = ({ materia }) => {
           margin: "10px 0",
           padding: "8px 12px",
           cursor: "pointer",
-          background: "#4CAF50",
+          background: "#4ea1ac",
           color: "white",
           border: "none",
           borderRadius: "5px",
         }}
       >
-        {mostrarFormulario ? "Cancelar" : "➕ Agregar Día"}
+        {mostrarFormulario ? "Cancelar" : " Agregar Día"}
       </button>
 {mostrarFormulario && (
         <form onSubmit={handleSubmit} style={{ marginTop: "10px" }}>
-      <h2>📘 Cargar día para {materia.nombre}</h2>
+      <h2>Cargar día para {materia.nombre}</h2>
 
         <input
           type="number"
@@ -186,12 +186,12 @@ const DiaLibro = ({ materia }) => {
       </form>
       )}
 
-      <h3 style={{ marginTop: "30px" }}>📅 Días registrados</h3>
+      <h3 style={{ marginTop: "30px" }}>Clases registradas</h3>
       {dias.length > 0 ? (
         <ul>
           {dias.map((d) => (
             <li key={d.id}>
-              📆 <strong>{d.fecha}</strong> — Clase {d.nClase} — Unidad {d.unidad} — Tema: {d.tema} — {d.asistencia === "sí" ? "✅ Asistió" : "❌ No asistió"} {d.confirmacion && "📜 (Confirmado)"}
+               <strong>{d.fecha}</strong> — Clase {d.nClase} — Unidad {d.unidad} — Tema: {d.tema} — {d.asistencia === "sí" ? "✅ Asistió" : "❌ No asistió"} {d.confirmacion && "(Confirmado por Preceptor)"}
             </li>
           ))}
         </ul>

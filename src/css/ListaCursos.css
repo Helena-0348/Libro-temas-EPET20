@@ -10,17 +10,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #e0f2fe;
+  background-color: #d6dcf3;
   padding: 15px 25px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .titulo {
-  color: #1e3a8a;
+  color: #ffffff;
   margin: 0;
   font-weight: 700;
   font-size: 22px;
+  background: none; /* Asegura que no tenga fondo */
+  border: none;
 }
 
 .acciones-derecha {
@@ -39,7 +41,7 @@
 
 .boton-modificar,
 .boton-agregar {
-  background-color: #3b82f6;
+  background-color: #6b93c8;
   color: white;
   border: none;
   padding: 8px 14px;
@@ -49,7 +51,7 @@
 
 .boton-modificar:hover,
 .boton-agregar:hover {
-  background-color: #2563eb;
+  background-color: #5685c2;
 }
 
 /* CONTENIDO PRINCIPAL */
@@ -87,7 +89,7 @@
 }
 
 .boton-guardar {
-  background-color: #2563eb;
+  background-color: #6b93c8;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -126,7 +128,7 @@
 
 .columna-izquierda {
   width: 30%;
-  background: #f9f9f9;
+  background: #ced4f0;
   padding: 15px;
   border-radius: 10px;
 }
@@ -147,12 +149,12 @@
 }
 
 .boton-materia.seleccionada {
-  background: #007bff;
+  background: #5174a3;
   color: white;
 }
 
 .boton-agregar-materia {
-  background: #4caf50;
+  background: #4ea1ac;
   color: white;
   border: none;
   padding: 10px;
@@ -163,7 +165,7 @@
 /* --- Derecha --- */
 .columna-derecha {
   width: 70%;
-  background: #fff;
+  background: #ecf0ff;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 15px;

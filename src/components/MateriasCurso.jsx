@@ -55,7 +55,7 @@ const MateriasCurso = ({ curso }) => {
     <div className="materias-container">
       {/* IZQUIERDA */}
       <div className="columna-izquierda">
-        <h3>📘 Materias</h3>
+        <h3>Materias</h3>
         <div className="lista-materias">
           {materias.map((m) => (
             <button
@@ -72,7 +72,7 @@ const MateriasCurso = ({ curso }) => {
             className="boton-agregar-materia"
             onClick={() => setMostrarFormulario(!mostrarFormulario)}
           >
-            {mostrarFormulario ? "Cancelar" : "➕ Agregar materia"}
+            {mostrarFormulario ? "Cancelar" : "Agregar materia"}
           </button>
         </div>
 
@@ -111,7 +111,7 @@ const MateriasCurso = ({ curso }) => {
             <div className="header-materia">
               <h4>{materiaSeleccionada.nombre}</h4>
               {!editandoDocente ? (
-                <button onClick={() => setEditandoDocente(true)}>✏️ Cambiar docente</button>
+                <button onClick={() => setEditandoDocente(true)}>Cambiar docente</button>
               ) : (
                 <form onSubmit={handleActualizarDocente} className="form-docente">
                   <input
