@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Inicio.css'; 
 import ContactoInfo from './ContactoInfo';
+import GoButton from './Gobutton';
 
 function Inicio() {
   return (
@@ -31,7 +32,7 @@ function Inicio() {
                   La EPET N° 20 (Escuela Provincial de Enseñanza Técnica N° 20) de Neuquén es una institución educativa técnica ubicada en Lanín 2020, Neuquén, preparando a los estudiantes con .
                 </p>
                 <p className="descripcion">
-                  Utiliza este sistema para gestionar y consultar la información académica de los cursos : {}
+                  Utiliza este sistema para gestionar y consultar la información académica de los cursos : {<GoButton></GoButton>} {}
                 </p>
             </div>
           </div>

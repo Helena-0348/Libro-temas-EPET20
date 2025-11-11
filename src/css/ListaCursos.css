@@ -1,0 +1,189 @@
+.lista-cursos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 15px;
+}
+
+/* ENCABEZADO */
+.encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e0f2fe;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.titulo {
+  color: #1e3a8a;
+  margin: 0;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.acciones-derecha {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* BOTONES Y SELECT */
+.selector-curso {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #93c5fd;
+  font-size: 15px;
+}
+
+.boton-modificar,
+.boton-agregar {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.boton-modificar:hover,
+.boton-agregar:hover {
+  background-color: #2563eb;
+}
+
+/* CONTENIDO PRINCIPAL */
+.contenido-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 10px;
+}
+
+/* FORMULARIOS */
+.contenedor-edicion {
+  background-color: #dbeafe;
+  padding: 20px;
+  border-radius: 12px;
+  width: fit-content;
+  margin: 0 auto;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.contenedor-edicion label {
+  display: block;
+  margin-bottom: 4px;
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+.contenedor-edicion input,
+.contenedor-edicion select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #93c5fd;
+  margin-bottom: 10px;
+  width: 250px;
+}
+
+.boton-guardar {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.lista-cursos-container {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.acciones-derecha {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.panel-doble {
+  display: flex;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+/* --- Materias --- */
+.materias-container {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.columna-izquierda {
+  width: 30%;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.lista-materias {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.boton-materia {
+  background: #e0e0e0;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.boton-materia.seleccionada {
+  background: #007bff;
+  color: white;
+}
+
+.boton-agregar-materia {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* --- Derecha --- */
+.columna-derecha {
+  width: 70%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.header-materia {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-docente {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.formulario-materia {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}

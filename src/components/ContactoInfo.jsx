@@ -19,7 +19,7 @@ const ContactoInfo = () => {
         <div className="contacto__item">
           <svg className="icon" viewBox="0 0 24 24" aria-hidden="true">
           </svg>
-          <a className="contacto__link" href="https://epet20.edu.ar/" target="_blank" rel="noopener noreferrer">Pagina oficial </a>
+          <a className="contacto__link" href="https://epet20.edu.ar/" target="_blank" rel="noopener noreferrer">Pagina estudiantes </a>
         </div>
       </div>
 

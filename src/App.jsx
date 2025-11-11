@@ -1,20 +1,28 @@
+// src/App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// Importación de tus componentes
+// Importación componentes
 import Home from "./components/Home";
+import Formulario from "./components/Formulario.jsx";
 import PaginaLibro from "./components/PaginaLibro";
+
 import Registro from "./components/Registro";
+import PaginaInicio from "./components/PaginaInicio";
 import Inicio from "./components/Inicio.jsx";
+
 import AltaDato from "./components/AltaDato.jsx";
+//import {gapi} from './gapi-script'
 //import {useEffect} from 'react';
 import ListadoDatos from "./components/listadoDatos.jsx";
-import './css/App.css'; // añade si no está
+
+import './css/App.css'; 
+
 import GoogleLogin from "./components/GoogleLogin.jsx";
+
 import DiaLibro from "./components/DiaLibro.jsx";
-import Cursos from "./components/Cursos.jsx";
-import ListaCursos from "./components/ListaCursos.jsx";
-import ListarMateriasCurso from "./components/ListarMateriasCurso.jsx";
+import ShowDias from "./components/ShowDias.jsx";
+import MesLibro from "./components/MesLibro.jsx";
 //import FormularioNombreApellido.from "./components/formularioNombreApellido";
 //import PantallaDestino from "./components/PantallaDestino";
 function App() {
@@ -29,7 +37,9 @@ function App() {
         
         
           {/* Ruta de inicio */}
-          <Route path="/" element={<Home  />} />
+          <Route path="/" element={<Home/>} />
+
+          <Route path="/AppRouter" element={<AppRouter/>} />
 
           {/* Otra página de inicio */}
           <Route path="/inicio" element={<Inicio />} />
@@ -51,19 +61,19 @@ function App() {
               </div>
             }
           />
-
-          {/* Otras páginas que tenías */}
           <Route path="/Googlelogin" element={<GoogleLogin />} />
+         
           <Route path="/libro" element={<PaginaLibro />} />
+         
           <Route path="/registro" element={<Registro />} />
+
           <Route path="/dia" element={<DiaLibro />} />
+          <Route path="/muestraD" element={<ShowDias />} />
+          <Route path="/mes" element={<MesLibro />} />
 
-          <Route path="/lista" element={<ListarMateriasCurso />} />
-
-          <Route path="/cursos" element={<Cursos />} />
-          <Route path="/listaC" element={<ListaCursos />} />        
           {/* Ruta comodín: si no existe, muestra Inicio */}
           <Route path="*" element={<Inicio />} />
+
         </Routes>
       </div>
      
@@ -71,3 +81,55 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+// import React from 'react'
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+        
+//         <p>
+//           Edit <code>src/App.js</code> and save to reload.
+//         </p>
+//         <a
+//           className="App-link"
+//           href="https://reactjs.org"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Learn React
+//         </a>
+//       </header>
+//     </div>
+//   );
+// }
+
+
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+        
+//         <p>
+//           Edit <code>src/App.js</code> and save to reload.
+//         </p>
+//         <a
+//           className="App-link"
+//           href="https://reactjs.org"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Learn React
+//         </a>
+//       </header>
+//     </div>
+//   );
+// }
+
+// export default App;

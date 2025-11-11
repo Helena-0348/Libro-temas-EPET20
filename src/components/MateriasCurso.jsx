@@ -1,131 +1,143 @@
 import React, { useState, useEffect } from "react";
-import { collection, addDoc, onSnapshot } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import DiaLibro from "./DiaLibro";
+import "../css/ListaCursos.css";
 
 const MateriasCurso = ({ curso }) => {
+  const [materias, setMaterias] = useState([]);
+  const [materiaSeleccionada, setMateriaSeleccionada] = useState(null);
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [nuevoDocente, setNuevoDocente] = useState("");
+  const [editandoDocente, setEditandoDocente] = useState(false);
   const [nombre, setNombre] = useState("");
   const [anio, setAnio] = useState("2025");
   const [profesor, setProfesor] = useState("");
-  const [materias, setMaterias] = useState([]);
-  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
-  // 🔹 Cargar materias del curso en tiempo real
+  // 🔹 Cargar materias del curso
   useEffect(() => {
-    if (!curso || !curso.id) return;
-
+    if (!curso?.id) return;
     const materiasRef = collection(db, "cursos", curso.id, "materias");
     const unsubscribe = onSnapshot(materiasRef, (snapshot) => {
-      const listaMaterias = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        creado: doc.data().creado?.toDate
-          ? doc.data().creado.toDate().toLocaleString()
-          : doc.data().creado,
-      }));
-      setMaterias(listaMaterias);
+      const lista = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setMaterias(lista);
     });
-
     return () => unsubscribe();
   }, [curso]);
 
-  // 🔹 Agregar nueva materia
-  const handleSubmit = async (e) => {
+  // 🔹 Agregar materia
+  const handleAgregarMateria = async (e) => {
     e.preventDefault();
-    if (!curso || !curso.id) return;
-
-    try {
-      const materiasRef = collection(db, "cursos", curso.id, "materias");
-      await addDoc(materiasRef, {
-        nombre,
-        año: parseInt(anio),
-        profesor,
-        creado: new Date(),
-      });
-
-      // limpiar formulario
-      setNombre("");
-      setAnio("2025");
-      setProfesor("");
-      setMostrarFormulario(false);
-    } catch (error) {
-      console.error("❌ Error al agregar materia:", error);
-    }
+    const materiasRef = collection(db, "cursos", curso.id, "materias");
+    await addDoc(materiasRef, {
+      nombre,
+      año: parseInt(anio),
+      profesor,
+      creado: new Date(),
+    });
+    setNombre("");
+    setAnio("2025");
+    setProfesor("");
+    setMostrarFormulario(false);
   };
 
-  if (!curso || !curso.id) {
-    return <p style={{ color: "red" }}>⚠️ No se seleccionó ningún curso.</p>;
-  }
+  // 🔹 Cambiar docente
+  const handleActualizarDocente = async (e) => {
+    e.preventDefault();
+    if (!materiaSeleccionada) return;
+    const materiaRef = doc(db, "cursos", curso.id, "materias", materiaSeleccionada.id);
+    await updateDoc(materiaRef, { profesor: nuevoDocente });
+    setMateriaSeleccionada({ ...materiaSeleccionada, profesor: nuevoDocente });
+    setEditandoDocente(false);
+  };
 
   return (
-    <div style={{ marginTop: "20px" }}>
-      <h2>
-        📘 Materias del curso {curso.anioC}° año — División {curso.division}
-      </h2>
-
-      {/* 🔸 Botón para mostrar/ocultar el formulario */}
-      <button
-        onClick={() => setMostrarFormulario(!mostrarFormulario)}
-        style={{
-          margin: "10px 0",
-          padding: "8px 12px",
-          cursor: "pointer",
-          background: "#4CAF50",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-        }}
-      >
-        {mostrarFormulario ? "Cancelar" : "➕ Agregar Materia"}
-      </button>
-
-      {/* 🔸 Formulario condicional */}
-      {mostrarFormulario && (
-        <form onSubmit={handleSubmit} style={{ marginTop: "10px" }}>
-          <input
-            type="text"
-            placeholder="Nombre de la materia"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-            required
-          />
-          <input
-            type="number"
-            placeholder="Año (ej: 4)"
-            value={anio}
-            onChange={(e) => setAnio(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Nombre del profesor"
-            value={profesor}
-            onChange={(e) => setProfesor(e.target.value)}
-            required
-          />
-          <button type="submit" style={{ marginLeft: "10px" }}>
-            Guardar
-          </button>
-        </form>
-      )}
-
-      <h3 style={{ marginTop: "20px" }}>📋 Lista de materias</h3>
-
-      {materias.length > 0 ? (
-        <ul>
+    <div className="materias-container">
+      {/* IZQUIERDA */}
+      <div className="columna-izquierda">
+        <h3>📘 Materias</h3>
+        <div className="lista-materias">
           {materias.map((m) => (
-            <li key={m.id} style={{ marginBottom: "15px" }}>
-              <strong>{m.nombre}</strong> — Año: {m.año} — Prof. {m.profesor}
-              {/* 🔹 Mostrar los días asociados a la materia */}
-              <div style={{ marginTop: "8px", marginLeft: "15px" }}>
-                <DiaLibro materia={m} />
-              </div>
-            </li>
+            <button
+              key={m.id}
+              className={`boton-materia ${
+                materiaSeleccionada?.id === m.id ? "seleccionada" : ""
+              }`}
+              onClick={() => setMateriaSeleccionada(m)}
+            >
+              {m.nombre}
+            </button>
           ))}
-        </ul>
-      ) : (
-        <p>No hay materias cargadas para este curso.</p>
-      )}
+          <button
+            className="boton-agregar-materia"
+            onClick={() => setMostrarFormulario(!mostrarFormulario)}
+          >
+            {mostrarFormulario ? "Cancelar" : "➕ Agregar materia"}
+          </button>
+        </div>
+
+        {mostrarFormulario && (
+          <form onSubmit={handleAgregarMateria} className="formulario-materia">
+            <input
+              type="text"
+              placeholder="Nombre de la materia"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+              required
+            />
+            <input
+              type="number"
+              placeholder="Año"
+              value={anio}
+              onChange={(e) => setAnio(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Profesor"
+              value={profesor}
+              onChange={(e) => setProfesor(e.target.value)}
+              required
+            />
+            <button type="submit">Guardar</button>
+          </form>
+        )}
+      </div>
+
+      {/* DERECHA */}
+      <div className="columna-derecha">
+        {materiaSeleccionada ? (
+          <div className="detalle-materia">
+            <div className="header-materia">
+              <h4>{materiaSeleccionada.nombre}</h4>
+              {!editandoDocente ? (
+                <button onClick={() => setEditandoDocente(true)}>✏️ Cambiar docente</button>
+              ) : (
+                <form onSubmit={handleActualizarDocente} className="form-docente">
+                  <input
+                    type="text"
+                    placeholder="Nuevo docente"
+                    value={nuevoDocente}
+                    onChange={(e) => setNuevoDocente(e.target.value)}
+                    required
+                  />
+                  <button type="submit">Guardar</button>
+                  <button type="button" onClick={() => setEditandoDocente(false)}>
+                    Cancelar
+                  </button>
+                </form>
+              )}
+            </div>
+
+            <p><strong>Docente:</strong> {materiaSeleccionada.profesor}</p>
+            <p><strong>Año:</strong> {materiaSeleccionada.año}</p>
+
+            <DiaLibro materia={materiaSeleccionada} />
+          </div>
+        ) : (
+          <p>Selecciona una materia para ver los detalles.</p>
+        )}
+      </div>
     </div>
   );
 };

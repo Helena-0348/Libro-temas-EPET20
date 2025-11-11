@@ -14,7 +14,7 @@ const Info = () => {
 Con esta plataforma, la organización de tus clases y el trabajo en equipo con la escuela serán mucho más rápidos y sencillos.</p>
 
         <div className="info__actions" role="group" aria-label="Acciones principales">
-          <a className="btn btn--primary" href="/Googlelogin" title="Iniciar Sesion">Iniciar Sesion</a>
+          <a className="btn btn--primary" href="/AppRouter" title="Iniciar Sesion">Iniciar Sesion</a>
           
         </div>
       </div>

@@ -43,7 +43,7 @@ const AltaDato = () => {
 
   return (
     <div>
-      <h2>Agregar Nuevo Profesor</h2>ñ
+      <h2>Agregar Nuevo Profesor</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

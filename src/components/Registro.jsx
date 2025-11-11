@@ -17,7 +17,7 @@ const Registro = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ nombre, gmail, curso, division, codigo });
-    navigate("/libro");
+    navigate("/inicioa");
   }
 
   return (
