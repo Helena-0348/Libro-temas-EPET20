@@ -4,6 +4,7 @@ import '../css/Inicio.css';
 import ContactoInfo from './ContactoInfo';
 import GoButton from './GoButton';
 import AppRouter from './AppRouter';
+
 /**
  * Componente Inicio
  * Página de bienvenida con información sobre la EPET N°20
@@ -14,7 +15,7 @@ function Inicio() {
 
   const handleNavigation = (ruta) => {
     navigate(ruta);
-  };
+                                     };
 
   return (
     <div className="inicio-page-wrapper">
@@ -50,7 +51,7 @@ function Inicio() {
               </p>
 
               {/* Botón para ir a libros */}
-              <GoButton to="/PaginaLibro" label="Ir a libros disponibles" className="inicio-go-button" />
+              <GoButton to="/listacursos" label="Ir a libros disponibles" className="inicio-go-button" />
             </div>
           </div>
         </div>
@@ -72,7 +73,7 @@ function Inicio() {
             
             <button 
               className="link-rapido" 
-              onClick={() => handleNavigation('/PaginaLibro')}
+              onClick={() => handleNavigation('/listacursos')}
               type="button"
               aria-label="Ir a libro de temas"
             >

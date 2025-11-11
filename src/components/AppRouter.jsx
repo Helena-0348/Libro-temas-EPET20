@@ -17,6 +17,8 @@ import DiaLibro from './DiaLibro.jsx';
 import ShowDias from './ShowDias.jsx';
 import AltaDato from './AltaDato.jsx';
 import ListadoDatos from './listadoDatos.jsx';
+import ListaCursos from './ListaCursos.jsx';
+
 
 const DEFAULT_ROLE = 'profesor';
 
@@ -102,6 +104,7 @@ const AppRouter = () => {
       {/* rutas privadas para roles */}
       {(rol === 'profesor' || rol === 'preceptor' || rol === 'admin') && (
         <>
+          <Route path="/ListaCursos" element={<ListaCursos />} />
           <Route path="/Formulario" element={<Formulario />} />
           <Route path="/PaginaLibro" element={<PaginaLibro />} />
           <Route path="/libro" element={<PaginaLibro />} />
