@@ -7,13 +7,13 @@ import { useUser } from '../context/useUser';
 
 function Inicio() {
   const navigate = useNavigate();
-  const ctx = useUser(); // contexto: { user, login, logout, ... }
-  console.log('useUser context:', ctx); // DEBUG: ver en consola qué trae el contexto
-  const user = ctx?.user ?? null;
+  const ctx = useUser(); // { user, login, logout, loadingUser? }
+  console.log('useUser context (Inicio):', ctx); // mira en la consola qué trae
 
-  const handleNavigation = (ruta) => {
-    navigate(ruta);
-  };
+  const user = ctx?.user ?? null;
+  const loading = ctx?.loadingUser ?? false;
+
+  const handleNavigation = (ruta) => navigate(ruta);
 
   return (
     <div className="inicio-page-wrapper">
@@ -27,7 +27,9 @@ function Inicio() {
 
             <div className="titulo-y-descripcion">
               <h1 className="titulo-seccion-principal">
-                Bienvenido {user?.displayName } — Libro de Temas Digital
+                {loading
+                  ? 'Cargando…'
+                  : `Bienvenido ${user?.displayName ?? user?.name ?? 'invitado'} — Libro de Temas Digital`}
               </h1>
 
               <p className="descripcion">
@@ -62,4 +64,3 @@ function Inicio() {
 }
 
 export default Inicio;
-// ...existing code...
