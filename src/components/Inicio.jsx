@@ -8,7 +8,7 @@ import { useUser } from '../context/useUser';
 function Inicio() {
   const navigate = useNavigate();
   const ctx = useUser(); // { user, login, logout, loadingUser? }
-  console.log('useUser context (Inicio):', ctx); // mira en la consola qué trae
+  console.log('useUser context (Inicio):', ctx);
 
   const user = ctx?.user ?? null;
   const loading = ctx?.loadingUser ?? false;
@@ -54,6 +54,18 @@ function Inicio() {
             <button className="link-rapido" onClick={() => handleNavigation('/')} type="button">Inicio</button>
             <button className="link-rapido" onClick={() => handleNavigation('/listacursos')} type="button">Libro de temas</button>
             <button className="link-rapido" onClick={() => handleNavigation('/mi-rol')} type="button">Mi cuenta</button>
+
+            {/* Si el usuario es admin, mostrar botón para gestionar usuarios */}
+            {user?.rol === 'admin' && (
+              <button
+                className="link-rapido"
+                onClick={() => handleNavigation('/usuarios')}
+                type="button"
+                style={{ marginTop: 12, display: 'block' }}
+              >
+                Usuarios
+              </button>
+            )}
           </nav>
         </div>
       </div>

@@ -18,7 +18,7 @@ import ShowDias from './ShowDias.jsx';
 import AltaDato from './AltaDato.jsx';
 import ListadoDatos from './listadoDatos.jsx';
 import ListaCursos from './ListaCursos.jsx';
-
+import UsersList from './UsersList.jsx';
 
 const DEFAULT_ROLE = 'profesor';
 
@@ -70,7 +70,7 @@ const AppRouter = () => {
     return () => unsub();
   }, []);
 
-  if (loading) return <div style={{ padding:10 }}>Cargando...</div>;
+  if (loading) return <div style={{ padding: 10 }}>Cargando...</div>;
 
   const rol = userState?.rol;
 
@@ -98,6 +98,20 @@ const AppRouter = () => {
           <PrivateRoute user={userState}>
             <UserRole user={userState} />
           </PrivateRoute>
+        }
+      />
+
+      {/* gestión de usuarios: solo para admin */}
+      <Route
+        path="/usuarios"
+        element={
+          userState?.rol === 'admin' ? (
+            <PrivateRoute user={userState}>
+              <UsersList />
+            </PrivateRoute>
+          ) : (
+            <Navigate to="/" replace />
+          )
         }
       />
 

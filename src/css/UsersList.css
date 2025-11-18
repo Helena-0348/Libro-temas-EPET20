@@ -1,0 +1,124 @@
+/* Estilos para UsersList */
+.userslist-main {
+  padding: 20px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  color: #1f2937;
+}
+
+.userslist-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(16,24,40,0.04);
+}
+
+.userslist-table thead {
+  background: #f3f4f6;
+}
+
+.userslist-table th,
+.userslist-table td {
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.userslist-table tbody tr:hover {
+  background: #fbfdff;
+}
+
+.userslist-select {
+  padding: 6px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  font-size: 14px;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.userslist-select:focus {
+  outline: none;
+  border-color: #2563a6;
+  box-shadow: 0 0 0 4px rgba(37,99,166,0.08);
+}
+
+.userslist-btn {
+  padding: 8px 12px;
+  background: #2563a6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background .12s, transform .08s;
+}
+
+.userslist-btn:hover:not(:disabled) {
+  background: #1e4b85;
+  transform: translateY(-1px);
+}
+
+.userslist-btn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.userslist-error {
+  color: #b91c1c;
+  background: #fff1f2;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  border: 1px solid #fecaca;
+}
+
+/* Header y título */
+.userslist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.userslist-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Responsive: tabla apilada en pantallas pequeñas */
+@media (max-width: 720px) {
+  .userslist-table thead {
+    display: none;
+  }
+
+  .userslist-table, .userslist-table tbody, .userslist-table tr, .userslist-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .userslist-table tr {
+    margin-bottom: 12px;
+    border-bottom: 1px solid #eef2f7;
+    padding: 12px;
+  }
+
+  .userslist-table td {
+    padding: 8px 0;
+  }
+
+  .userslist-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #374151;
+  }
+}
