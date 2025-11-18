@@ -104,7 +104,7 @@ const AppRouter = () => {
       {/* rutas privadas para roles */}
       {(rol === 'profesor' || rol === 'preceptor' || rol === 'admin') && (
         <>
-          <Route path="/ListaCursos" element={<ListaCursos />} />
+          <Route path="/listacursos" element={<ListaCursos />} />
           <Route path="/Formulario" element={<Formulario />} />
           <Route path="/PaginaLibro" element={<PaginaLibro />} />
           <Route path="/libro" element={<PaginaLibro />} />

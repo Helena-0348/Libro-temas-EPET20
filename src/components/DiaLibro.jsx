@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { collection, addDoc, onSnapshot } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, doc, getDoc, updateDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import { db } from "../firebase/firebase.jsx";
 
 const DiaLibro = ({ materia }) => {
@@ -9,11 +10,31 @@ const DiaLibro = ({ materia }) => {
   const [actividad, setActividad] = useState("");
   const [asistencia, setAsistencia] = useState("");
   const [confirmacion, setConfirmacion] = useState(false);
-  const [fecha, setFecha] = useState(""); 
+  const [fecha, setFecha] = useState("");
   const [dias, setDias] = useState([]);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
-  // Cargar los días de esa materia
+  const [puedeConfirmar, setPuedeConfirmar] = useState(false); // ⬅ NUEVO
+
+  // 🔹 Verificar rol del usuario logueado
+  useEffect(() => {
+    const obtenerRol = async () => {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      if (!user) return;
+
+      const ref = doc(db, "users", user.uid);
+      const snap = await getDoc(ref);
+
+      if (snap.exists() && snap.data().rol === "preceptor") {
+        setPuedeConfirmar(true);
+      }
+    };
+
+    obtenerRol();
+  }, []);
+
+  // 🔹 Cargar los días de la materia
   useEffect(() => {
     if (!materia || !materia.id) return;
 
@@ -23,9 +44,8 @@ const DiaLibro = ({ materia }) => {
       const listaDias = snapshot.docs.map((doc) => {
         const data = doc.data();
 
-        // ✅ Convertir fecha y fechaCreacion a string si son Timestamps
         const fechaStr = data.fecha?.toDate
-          ? data.fecha.toDate().toLocaleDateString("es-AR", { day: '2-digit', month: '2-digit' })
+          ? data.fecha.toDate().toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit" })
           : data.fecha;
 
         const fechaCreacionStr = data.fechaCreacion?.toDate
@@ -46,6 +66,7 @@ const DiaLibro = ({ materia }) => {
     return () => unsubscribe();
   }, [materia]);
 
+  // 🔹 Guardar un nuevo día
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!materia || !materia.id) return;
@@ -60,11 +81,10 @@ const DiaLibro = ({ materia }) => {
         actividad,
         asistencia,
         confirmacion,
-        fecha, 
-        fechaCreacion: new Date(), // Timestamp de Firebase
+        fecha,
+        fechaCreacion: new Date(),
       });
 
-      // Limpiar formulario
       setnClase("");
       setUnidad("");
       setTema("");
@@ -77,13 +97,22 @@ const DiaLibro = ({ materia }) => {
     }
   };
 
+  // 🔹 Actualizar confirmación del preceptor
+  const actualizarConfirmacion = async (diaId, valor) => {
+    try {
+      const ref = doc(db, "materias", materia.id, "dias", diaId);
+      await updateDoc(ref, { confirmacion: valor });
+    } catch (error) {
+      console.error("❌ Error al actualizar confirmación:", error);
+    }
+  };
+
   if (!materia || !materia.id) {
     return <p style={{ color: "red" }}>⚠️ No se seleccionó ninguna materia.</p>;
   }
 
   return (
     <div style={{ marginTop: "20px" }}>
-      {/* 🔸 Botón para mostrar/ocultar el formulario */}
       <button
         onClick={() => setMostrarFormulario(!mostrarFormulario)}
         style={{
@@ -96,102 +125,106 @@ const DiaLibro = ({ materia }) => {
           borderRadius: "5px",
         }}
       >
-        {mostrarFormulario ? "Cancelar" : " Agregar Día"}
+        {mostrarFormulario ? "Cancelar" : "Agregar Día"}
       </button>
-{mostrarFormulario && (
+
+      {mostrarFormulario && (
         <form onSubmit={handleSubmit} style={{ marginTop: "10px" }}>
-      <h2>Cargar día para {materia.nombre}</h2>
+          <h2>Cargar día para {materia.nombre}</h2>
 
-        <input
-          type="number"
-          value={nClase}
-          onChange={(e) => setnClase(e.target.value)}
-          placeholder="N° de clase"
-          required
-        />
-
-        <input
-          type="number"
-          value={unidad}
-          onChange={(e) => setUnidad(e.target.value)}
-          placeholder="Unidad"
-          required
-        />
-
-        <input
-          type="text"
-          placeholder="DD/MM"
-          pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])$"
-          title="Formato válido: DD/MM (Ejemplo: 07/05)"
-          value={fecha}
-          onChange={(e) => setFecha(e.target.value)}
-          required
-        />
-
-        <input
-          type="text"
-          value={tema}
-          onChange={(e) => setTema(e.target.value)}
-          placeholder="Tema de la unidad"
-          required
-        />
-
-        <input
-          type="text"
-          value={actividad}
-          onChange={(e) => setActividad(e.target.value)}
-          placeholder="Actividad del día"
-          required
-        />
-
-        <p>¿Asistió el profesor?</p>
-        <label>
           <input
-            type="radio"
-            name="asistencia"
-            value="sí"
-            checked={asistencia === "sí"}
-            onChange={(e) => setAsistencia(e.target.value)}
+            type="number"
+            value={nClase}
+            onChange={(e) => setnClase(e.target.value)}
+            placeholder="N° de clase"
             required
           />
-          Sí
-        </label>
 
-        <label style={{ marginLeft: "1rem" }}>
           <input
-            type="radio"
-            name="asistencia"
-            value="no"
-            checked={asistencia === "no"}
-            onChange={(e) => setAsistencia(e.target.value)}
+            type="number"
+            value={unidad}
+            onChange={(e) => setUnidad(e.target.value)}
+            placeholder="Unidad"
             required
           />
-          No
-        </label>
 
-        <br />
-
-        <label style={{ display: "block", marginTop: "10px" }}>
           <input
-            type="checkbox"
-            checked={confirmacion}
-            onChange={(e) => setConfirmacion(e.target.checked)}
+            type="text"
+            placeholder="DD/MM"
+            pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])$"
+            title="Formato válido: DD/MM"
+            value={fecha}
+            onChange={(e) => setFecha(e.target.value)}
+            required
           />
-          Confirmación del Preceptor
-          
-        </label>
 
-        <br />
-        <button type="submit">Guardar día</button>
-      </form>
+          <input
+            type="text"
+            value={tema}
+            onChange={(e) => setTema(e.target.value)}
+            placeholder="Tema de la unidad"
+            required
+          />
+
+          <input
+            type="text"
+            value={actividad}
+            onChange={(e) => setActividad(e.target.value)}
+            placeholder="Actividad del día"
+            required
+          />
+
+          <p>¿Asistió el profesor?</p>
+          <label>
+            <input
+              type="radio"
+              name="asistencia"
+              value="sí"
+              checked={asistencia === "sí"}
+              onChange={(e) => setAsistencia(e.target.value)}
+              required
+            />
+            Sí
+          </label>
+
+          <label style={{ marginLeft: "1rem" }}>
+            <input
+              type="radio"
+              name="asistencia"
+              value="no"
+              checked={asistencia === "no"}
+              onChange={(e) => setAsistencia(e.target.value)}
+              required
+            />
+            No
+          </label>
+
+          <br />
+
+          <br />
+          <button type="submit">Guardar día</button>
+        </form>
       )}
 
       <h3 style={{ marginTop: "30px" }}>Clases registradas</h3>
+
       {dias.length > 0 ? (
         <ul>
           {dias.map((d) => (
-            <li key={d.id}>
-               <strong>{d.fecha}</strong> — Clase {d.nClase} — Unidad {d.unidad} — Tema: {d.tema} — {d.asistencia === "sí" ? "✅ Asistió" : "❌ No asistió"} {d.confirmacion && "(Confirmado por Preceptor)"}
+            <li key={d.id} style={{ marginBottom: "10px" }}>
+              <strong>{d.fecha}</strong> — Clase {d.nClase} — Unidad {d.unidad} — Tema: {d.tema} —{" "}
+              {d.asistencia === "sí" ? "✅ Asistió" : "❌ No asistió"}
+
+              {/* Checkbox nuevo dentro del listado */}
+              <label style={{ marginLeft: "1rem" }}>
+                <input
+                  type="checkbox"
+                  checked={d.confirmacion}
+                  disabled={!puedeConfirmar} // Solo preceptor modifica
+                  onChange={(e) => actualizarConfirmacion(d.id, e.target.checked)}
+                />
+                Confirmación del Preceptor
+              </label>
             </li>
           ))}
         </ul>

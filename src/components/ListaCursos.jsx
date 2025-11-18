@@ -5,6 +5,7 @@ import MateriasCurso from "./MateriasCurso";
 import Cursos from "./Cursos";
 import "../css/ListaCursos.css";
 
+
 const ListaCursos = () => {
   const [cursos, setCursos] = useState([]);
   const [cursoSeleccionado, setCursoSeleccionado] = useState(null);
